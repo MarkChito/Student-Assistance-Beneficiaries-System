@@ -26,6 +26,7 @@ Partial Class Login
         Label1 = New Label()
         TextBox1 = New TextBox()
         ListView1 = New ListView()
+        DateTimePicker1 = New DateTimePicker()
         SuspendLayout()
         ' 
         ' Label1
@@ -52,11 +53,19 @@ Partial Class Login
         ListView1.TabIndex = 2
         ListView1.UseCompatibleStateImageBehavior = False
         ' 
+        ' DateTimePicker1
+        ' 
+        DateTimePicker1.Location = New Point(144, 103)
+        DateTimePicker1.Name = "DateTimePicker1"
+        DateTimePicker1.Size = New Size(200, 23)
+        DateTimePicker1.TabIndex = 3
+        ' 
         ' Login
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(800, 450)
+        Controls.Add(DateTimePicker1)
         Controls.Add(ListView1)
         Controls.Add(TextBox1)
         Controls.Add(Label1)
@@ -70,4 +79,5 @@ Partial Class Login
     Friend WithEvents Label1 As Label
     Friend WithEvents TextBox1 As TextBox
     Friend WithEvents ListView1 As ListView
+    Friend WithEvents DateTimePicker1 As DateTimePicker
 End Class
