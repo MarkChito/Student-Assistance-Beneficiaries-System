@@ -36,3 +36,4 @@ E:\Documents\Visual Studio 2022\Projects\Student Assistance Beneficiaries System
 E:\Documents\Visual Studio 2022\Projects\Student Assistance Beneficiaries System\Student Assistance Beneficiaries System\obj\Debug\net6.0-windows\Student Assistance Beneficiaries System.vbproj.AssemblyReference.cache
 E:\Documents\Visual Studio 2022\Projects\Student Assistance Beneficiaries System\Student Assistance Beneficiaries System\obj\Debug\net6.0-windows\Student Assistance Beneficiaries System.vbproj.CopyComplete
 E:\Documents\Visual Studio 2022\Projects\Student Assistance Beneficiaries System\Student Assistance Beneficiaries System\obj\Debug\net6.0-windows\Student_Assistance_Beneficiaries_System.Main.resources
+E:\Documents\Visual Studio 2022\Projects\Student Assistance Beneficiaries System\Student Assistance Beneficiaries System\obj\Debug\net6.0-windows\Student_Assistance_Beneficiaries_System.RFID_Login.resources

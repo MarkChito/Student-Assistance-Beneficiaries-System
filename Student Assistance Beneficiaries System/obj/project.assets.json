@@ -1822,19 +1822,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Client\\.nuget\\packages\\": {}
+    "C:\\Users\\Admin\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Client\\Source\\Repos\\Student-Assistance-Beneficiaries-System-Desktop-App\\Student Assistance Beneficiaries System\\Student Assistance Beneficiaries System.vbproj",
+      "projectUniqueName": "E:\\Documents\\Visual Studio 2022\\Projects\\Student Assistance Beneficiaries System\\Student Assistance Beneficiaries System\\Student Assistance Beneficiaries System.vbproj",
       "projectName": "Student Assistance Beneficiaries System",
-      "projectPath": "C:\\Users\\Client\\Source\\Repos\\Student-Assistance-Beneficiaries-System-Desktop-App\\Student Assistance Beneficiaries System\\Student Assistance Beneficiaries System.vbproj",
-      "packagesPath": "C:\\Users\\Client\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Client\\Source\\Repos\\Student-Assistance-Beneficiaries-System-Desktop-App\\Student Assistance Beneficiaries System\\obj\\",
+      "projectPath": "E:\\Documents\\Visual Studio 2022\\Projects\\Student Assistance Beneficiaries System\\Student Assistance Beneficiaries System\\Student Assistance Beneficiaries System.vbproj",
+      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+      "outputPath": "E:\\Documents\\Visual Studio 2022\\Projects\\Student Assistance Beneficiaries System\\Student Assistance Beneficiaries System\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Client\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1888,7 +1888,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
       }
     }
   }

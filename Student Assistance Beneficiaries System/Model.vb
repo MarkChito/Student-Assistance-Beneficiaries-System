@@ -117,4 +117,42 @@ Module Model
 
         Return Net.BCrypt.Verify(plainTextPassword, fixedHashedPassword)
     End Function
+
+    Public Function RFID_Authenticate(rfid_number As String)
+        Dim results As New Dictionary(Of String, String)()
+
+        Dim db_rfid_number = ""
+
+        Database_Open()
+
+        table.Clear()
+
+        With command
+            .CommandText = "SELECT * FROM `tbl_studentassistance_useraccounts` WHERE `rfid_number`='" & rfid_number & "'"
+            .Connection = connection
+            .ExecuteNonQuery()
+        End With
+
+        With adapter
+            .SelectCommand = command
+            .Fill(table)
+        End With
+
+        For Each row As DataRow In table.Rows
+            db_rfid_number = row("rfid_number").ToString()
+        Next
+
+        If db_rfid_number = rfid_number Then
+            For Each row As DataRow In table.Rows
+                results.Add("response_code", 200)
+                results.Add("primary_key", row("primary_key").ToString())
+            Next
+        Else
+            results.Add("response_code", 404)
+        End If
+
+        Database_Close()
+
+        Return results
+    End Function
 End Module

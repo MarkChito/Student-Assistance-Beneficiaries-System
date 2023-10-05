@@ -1,7 +1,7 @@
 ﻿Imports System.Net
 
 Public Class Login
-    Private is_loading As Boolean = False
+    Public is_loading As Boolean = False
 
     Private Sub CenterPanel(parent_object As Object, child_object As Object)
         Dim centerX As Integer = parent_object.Width \ 2 - child_object.Width \ 2
@@ -116,5 +116,16 @@ Public Class Login
     Private Sub btn_sign_in_MouseDown(sender As Object, e As MouseEventArgs) Handles btn_sign_in.MouseDown
         btn_sign_in.Text = "Processing..."
         remember_me.Enabled = False
+    End Sub
+
+    Private Sub btn_sign_in_using_rfid_card_Click(sender As Object, e As EventArgs) Handles btn_sign_in_using_rfid_card.Click
+        If Not is_loading Then
+            btn_temp.Focus()
+
+            With RFID_Login
+                .ShowDialog()
+                .txt_rfid_number.Focus()
+            End With
+        End If
     End Sub
 End Class
