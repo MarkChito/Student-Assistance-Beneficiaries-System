@@ -13,6 +13,11 @@
     End Sub
 
     Private Sub btn_sign_in_Click(sender As Object, e As EventArgs) Handles btn_close.Click
+        With txt_rfid_number
+            .Clear()
+            .Focus()
+        End With
+
         Me.Close()
     End Sub
 
@@ -32,10 +37,16 @@
                 If response_code = 200 Then
                     primary_key = results("primary_key")
 
+                    With txt_rfid_number
+                        .Clear()
+                        .Focus()
+                    End With
+
                     Me.Hide()
 
                     With Main
                         .Show()
+                        .Mouse_Click(.btn_dashboard)
                         .WindowState = FormWindowState.Maximized
                     End With
 
@@ -47,6 +58,11 @@
 
                         .pnl_notification.Hide()
 
+                        .txt_username.Clear()
+                        .txt_password.Clear()
+
+                        .remember_me.Checked = False
+
                         .Hide()
                     End With
 
@@ -54,12 +70,30 @@
                 Else
                     Login.is_loading = False
 
-                    MessageBox.Show("Invalid RFID Card!", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    Me.Hide()
+
+                    With Login
+                        .pnl_parent.Height = .pnl_login_form.Height + 61
+
+                        With .pnl_notification
+                            .Show()
+                            .BackColor = Color.FromArgb(220, 53, 69)
+                            .Location = New Point(0, 0)
+                        End With
+
+                        .lbl_notification.Text = "Invalid RFID Card"
+
+                        .Center_Object(.pnl_notification, .lbl_notification)
+
+                        .Center_Object(.ClientSize, .pnl_parent)
+                    End With
 
                     With txt_rfid_number
                         .Clear()
                         .Focus()
                     End With
+
+                    Me.Close()
                 End If
             Else
                 With txt_rfid_number

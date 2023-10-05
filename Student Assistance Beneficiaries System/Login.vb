@@ -3,7 +3,7 @@
 Public Class Login
     Public is_loading As Boolean = False
 
-    Private Sub CenterPanel(parent_object As Object, child_object As Object)
+    Public Sub Center_Object(parent_object As Object, child_object As Object)
         Dim centerX As Integer = parent_object.Width \ 2 - child_object.Width \ 2
         Dim centerY As Integer = parent_object.Height \ 2 - child_object.Height \ 2
 
@@ -23,12 +23,79 @@ Public Class Login
         button_name.Region = New Region(path)
     End Sub
 
-    Private Sub Sign_In()
+    Private Sub Login_SizeChanged(sender As Object, e As EventArgs) Handles MyBase.SizeChanged
+        Center_Object(ClientSize, pnl_parent)
+
+        pnl_notification.Location = New Point(pnl_login_form.Location.X, pnl_login_form.Location.Y - 53)
+    End Sub
+
+    Private Sub btn_sign_in_Paint(sender As Object, e As PaintEventArgs) Handles btn_sign_in.Paint
+        Rounded_Button(btn_sign_in)
+    End Sub
+
+    Private Sub btn_sign_in_using_rfid_card_Paint(sender As Object, e As PaintEventArgs) Handles btn_sign_in_using_rfid_card.Paint
+        Rounded_Button(btn_sign_in_using_rfid_card)
+    End Sub
+
+    Private Sub txt_username_KeyDown(sender As Object, e As KeyEventArgs) Handles txt_username.KeyDown
+        If Not is_loading Then
+            If e.KeyCode = Keys.Enter Then
+                With txt_password
+                    .Clear()
+                    .Focus()
+                End With
+            End If
+        End If
+    End Sub
+
+    Private Sub txt_password_KeyDown(sender As Object, e As KeyEventArgs) Handles txt_password.KeyDown
+        If Not is_loading Then
+            If e.KeyCode = Keys.Enter Then
+                btn_sign_in.Text = "Processing..."
+                remember_me.Enabled = False
+
+                btn_temp.Focus()
+
+                Timer1.Start()
+            End If
+        End If
+    End Sub
+
+    Private Sub Login_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Database_Open()
+        Database_Close()
+
+        pnl_parent.Height = pnl_login_form.Height
+
+        Center_Object(ClientSize, pnl_parent)
+    End Sub
+
+    Private Sub btn_sign_in_MouseDown(sender As Object, e As MouseEventArgs) Handles btn_sign_in.MouseDown
+        btn_sign_in.Text = "Processing..."
+        remember_me.Enabled = False
+
         btn_temp.Focus()
 
+        Timer1.Start()
+    End Sub
+
+    Private Sub btn_sign_in_using_rfid_card_Click(sender As Object, e As EventArgs) Handles btn_sign_in_using_rfid_card.Click
+        If Not is_loading Then
+            btn_temp.Focus()
+
+            With RFID_Login
+                .ShowDialog()
+                .txt_rfid_number.Focus()
+            End With
+        End If
+    End Sub
+
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         If String.IsNullOrWhiteSpace(txt_username.Text) Then
             btn_sign_in.Text = "Login"
             remember_me.Enabled = True
+
+            Timer1.Stop()
 
             MessageBox.Show("Please fill in the Username field.", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Error)
 
@@ -36,6 +103,8 @@ Public Class Login
         ElseIf String.IsNullOrWhiteSpace(txt_password.Text) Then
             btn_sign_in.Text = "Login"
             remember_me.Enabled = True
+
+            Timer1.Stop()
 
             MessageBox.Show("Please fill in the Password field.", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Error)
 
@@ -54,78 +123,45 @@ Public Class Login
 
                 With Main
                     .Show()
+                    .Mouse_Click(.btn_dashboard)
                     .WindowState = FormWindowState.Maximized
                 End With
 
-                remember_me.Enabled = True
-                btn_sign_in.Text = "Login"
+                If Not remember_me.Checked Then
+                    txt_username.Clear()
+                    txt_password.Clear()
 
-                is_loading = False
-
-                pnl_notification.Hide()
+                    remember_me.Checked = False
+                End If
             Else
-                is_loading = False
-
-                remember_me.Enabled = True
-                btn_sign_in.Text = "Login"
+                pnl_parent.Height = pnl_login_form.Height + 61
 
                 With pnl_notification
-                    .Location = New Point(pnl_login_form.Location.X, pnl_login_form.Location.Y - 53)
-                    pnl_notification.Show()
+                    .Show()
+                    .BackColor = Color.FromArgb(220, 53, 69)
+                    .Location = New Point(0, 0)
                 End With
+
+                lbl_notification.Text = "Invalid Username or Password"
+
+                Center_Object(pnl_notification, lbl_notification)
+
+                txt_username.Clear()
+                txt_password.Clear()
+
+                Center_Object(ClientSize, pnl_parent)
             End If
+
+            remember_me.Enabled = True
+            btn_sign_in.Text = "Login"
+
+            is_loading = False
+
+            Timer1.Stop()
         End If
     End Sub
 
-    Private Sub Login_SizeChanged(sender As Object, e As EventArgs) Handles MyBase.SizeChanged
-        CenterPanel(ClientSize, pnl_login_form)
-
-        pnl_notification.Location = New Point(pnl_login_form.Location.X, pnl_login_form.Location.Y - 53)
-    End Sub
-
-    Private Sub btn_sign_in_Paint(sender As Object, e As PaintEventArgs) Handles btn_sign_in.Paint
-        Rounded_Button(btn_sign_in)
-    End Sub
-
-    Private Sub btn_sign_in_using_rfid_card_Paint(sender As Object, e As PaintEventArgs) Handles btn_sign_in_using_rfid_card.Paint
-        Rounded_Button(btn_sign_in_using_rfid_card)
-    End Sub
-
-    Private Sub txt_password_KeyDown(sender As Object, e As KeyEventArgs) Handles txt_password.KeyDown
-        If Not is_loading Then
-            If e.KeyCode = Keys.Enter Then
-                btn_sign_in.Text = "Processing..."
-                remember_me.Enabled = False
-
-                Sign_In()
-            End If
-        End If
-    End Sub
-
-    Private Sub btn_sign_in_Click(sender As Object, e As EventArgs) Handles btn_sign_in.Click
-        If Not is_loading Then
-            Sign_In()
-        End If
-    End Sub
-
-    Private Sub Login_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Database_Open()
-        Database_Close()
-    End Sub
-
-    Private Sub btn_sign_in_MouseDown(sender As Object, e As MouseEventArgs) Handles btn_sign_in.MouseDown
-        btn_sign_in.Text = "Processing..."
-        remember_me.Enabled = False
-    End Sub
-
-    Private Sub btn_sign_in_using_rfid_card_Click(sender As Object, e As EventArgs) Handles btn_sign_in_using_rfid_card.Click
-        If Not is_loading Then
-            btn_temp.Focus()
-
-            With RFID_Login
-                .ShowDialog()
-                .txt_rfid_number.Focus()
-            End With
-        End If
+    Private Sub remember_me_CheckedChanged(sender As Object, e As EventArgs) Handles remember_me.CheckedChanged
+        btn_temp.Focus()
     End Sub
 End Class

@@ -22,6 +22,7 @@ Partial Class Login
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        components = New ComponentModel.Container()
         Dim resources As ComponentModel.ComponentResourceManager = New ComponentModel.ComponentResourceManager(GetType(Login))
         pnl_login_form = New Panel()
         Panel4 = New Panel()
@@ -40,7 +41,9 @@ Partial Class Login
         PictureBox1 = New PictureBox()
         btn_temp = New Button()
         pnl_notification = New Panel()
-        Label4 = New Label()
+        lbl_notification = New Label()
+        pnl_parent = New Panel()
+        Timer1 = New Timer(components)
         pnl_login_form.SuspendLayout()
         Panel4.SuspendLayout()
         CType(PictureBox3, ComponentModel.ISupportInitialize).BeginInit()
@@ -48,6 +51,7 @@ Partial Class Login
         Panel2.SuspendLayout()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         pnl_notification.SuspendLayout()
+        pnl_parent.SuspendLayout()
         SuspendLayout()
         ' 
         ' pnl_login_form
@@ -56,9 +60,12 @@ Partial Class Login
         pnl_login_form.Controls.Add(Panel4)
         pnl_login_form.Controls.Add(Panel3)
         pnl_login_form.Controls.Add(Panel2)
-        pnl_login_form.Location = New Point(42, 97)
+        pnl_login_form.Dock = DockStyle.Bottom
+        pnl_login_form.Location = New Point(0, 61)
+        pnl_login_form.MaximumSize = New Size(400, 524)
+        pnl_login_form.MinimumSize = New Size(400, 524)
         pnl_login_form.Name = "pnl_login_form"
-        pnl_login_form.Size = New Size(400, 520)
+        pnl_login_form.Size = New Size(400, 524)
         pnl_login_form.TabIndex = 0
         ' 
         ' Panel4
@@ -75,12 +82,12 @@ Partial Class Login
         Panel4.Dock = DockStyle.Fill
         Panel4.Location = New Point(0, 246)
         Panel4.Name = "Panel4"
-        Panel4.Size = New Size(400, 274)
+        Panel4.Size = New Size(400, 278)
         Panel4.TabIndex = 3
         ' 
         ' btn_sign_in_using_rfid_card
         ' 
-        btn_sign_in_using_rfid_card.BackColor = Color.FromArgb(CByte(35), CByte(144), CByte(59))
+        btn_sign_in_using_rfid_card.BackColor = Color.FromArgb(CByte(40), CByte(167), CByte(69))
         btn_sign_in_using_rfid_card.Cursor = Cursors.Hand
         btn_sign_in_using_rfid_card.FlatAppearance.BorderSize = 0
         btn_sign_in_using_rfid_card.FlatStyle = FlatStyle.Flat
@@ -88,7 +95,7 @@ Partial Class Login
         btn_sign_in_using_rfid_card.ForeColor = Color.White
         btn_sign_in_using_rfid_card.Location = New Point(28, 209)
         btn_sign_in_using_rfid_card.Name = "btn_sign_in_using_rfid_card"
-        btn_sign_in_using_rfid_card.Size = New Size(345, 40)
+        btn_sign_in_using_rfid_card.Size = New Size(344, 40)
         btn_sign_in_using_rfid_card.TabIndex = 5
         btn_sign_in_using_rfid_card.Text = "Sign in using &RFID Card"
         btn_sign_in_using_rfid_card.UseVisualStyleBackColor = False
@@ -101,9 +108,9 @@ Partial Class Login
         btn_sign_in.FlatStyle = FlatStyle.Flat
         btn_sign_in.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point)
         btn_sign_in.ForeColor = Color.White
-        btn_sign_in.Location = New Point(232, 153)
+        btn_sign_in.Location = New Point(222, 153)
         btn_sign_in.Name = "btn_sign_in"
-        btn_sign_in.Size = New Size(141, 40)
+        btn_sign_in.Size = New Size(150, 40)
         btn_sign_in.TabIndex = 4
         btn_sign_in.Text = "Sign &In"
         btn_sign_in.UseVisualStyleBackColor = False
@@ -113,7 +120,7 @@ Partial Class Login
         remember_me.AutoSize = True
         remember_me.Cursor = Cursors.Hand
         remember_me.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point)
-        remember_me.Location = New Point(29, 153)
+        remember_me.Location = New Point(28, 153)
         remember_me.Name = "remember_me"
         remember_me.Size = New Size(127, 20)
         remember_me.TabIndex = 3
@@ -122,7 +129,7 @@ Partial Class Login
         ' 
         ' PictureBox3
         ' 
-        PictureBox3.BackColor = Color.LightGray
+        PictureBox3.BackColor = Color.FromArgb(CByte(233), CByte(236), CByte(239))
         PictureBox3.BorderStyle = BorderStyle.FixedSingle
         PictureBox3.Image = CType(resources.GetObject("PictureBox3.Image"), Image)
         PictureBox3.Location = New Point(346, 111)
@@ -144,7 +151,7 @@ Partial Class Login
         ' 
         ' PictureBox2
         ' 
-        PictureBox2.BackColor = Color.LightGray
+        PictureBox2.BackColor = Color.FromArgb(CByte(233), CByte(236), CByte(239))
         PictureBox2.BorderStyle = BorderStyle.FixedSingle
         PictureBox2.Image = CType(resources.GetObject("PictureBox2.Image"), Image)
         PictureBox2.Location = New Point(346, 69)
@@ -238,24 +245,40 @@ Partial Class Login
         ' pnl_notification
         ' 
         pnl_notification.BackColor = Color.FromArgb(CByte(220), CByte(53), CByte(69))
-        pnl_notification.Controls.Add(Label4)
-        pnl_notification.Location = New Point(42, 44)
+        pnl_notification.Controls.Add(lbl_notification)
+        pnl_notification.Dock = DockStyle.Top
+        pnl_notification.Location = New Point(0, 0)
+        pnl_notification.MaximumSize = New Size(400, 50)
         pnl_notification.Name = "pnl_notification"
         pnl_notification.Size = New Size(400, 50)
         pnl_notification.TabIndex = 1
         pnl_notification.Visible = False
         ' 
-        ' Label4
+        ' lbl_notification
         ' 
-        Label4.AutoSize = True
-        Label4.BackColor = Color.Transparent
-        Label4.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        Label4.ForeColor = Color.White
-        Label4.Location = New Point(89, 15)
-        Label4.Name = "Label4"
-        Label4.Size = New Size(223, 20)
-        Label4.TabIndex = 0
-        Label4.Text = "Invalid Username or Password"
+        lbl_notification.AutoSize = True
+        lbl_notification.BackColor = Color.Transparent
+        lbl_notification.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        lbl_notification.ForeColor = Color.White
+        lbl_notification.Location = New Point(89, 15)
+        lbl_notification.Name = "lbl_notification"
+        lbl_notification.Size = New Size(223, 20)
+        lbl_notification.TabIndex = 0
+        lbl_notification.Text = "Invalid Username or Password"
+        ' 
+        ' pnl_parent
+        ' 
+        pnl_parent.AutoSize = True
+        pnl_parent.BackColor = Color.Transparent
+        pnl_parent.Controls.Add(pnl_notification)
+        pnl_parent.Controls.Add(pnl_login_form)
+        pnl_parent.Location = New Point(17, 13)
+        pnl_parent.Name = "pnl_parent"
+        pnl_parent.Size = New Size(400, 585)
+        pnl_parent.TabIndex = 2
+        ' 
+        ' Timer1
+        ' 
         ' 
         ' Login
         ' 
@@ -264,13 +287,12 @@ Partial Class Login
         BackColor = Color.FromArgb(CByte(246), CByte(249), CByte(255))
         BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), Image)
         BackgroundImageLayout = ImageLayout.Stretch
-        ClientSize = New Size(484, 661)
-        Controls.Add(pnl_notification)
+        ClientSize = New Size(434, 611)
+        Controls.Add(pnl_parent)
         Controls.Add(btn_temp)
-        Controls.Add(pnl_login_form)
         Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point)
         Icon = CType(resources.GetObject("$this.Icon"), Icon)
-        MinimumSize = New Size(500, 700)
+        MinimumSize = New Size(450, 650)
         Name = "Login"
         StartPosition = FormStartPosition.CenterScreen
         Text = "Administrator Login"
@@ -284,7 +306,9 @@ Partial Class Login
         CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
         pnl_notification.ResumeLayout(False)
         pnl_notification.PerformLayout()
+        pnl_parent.ResumeLayout(False)
         ResumeLayout(False)
+        PerformLayout()
     End Sub
 
     Friend WithEvents pnl_login_form As Panel
@@ -304,5 +328,7 @@ Partial Class Login
     Friend WithEvents btn_sign_in_using_rfid_card As Button
     Friend WithEvents btn_temp As Button
     Friend WithEvents pnl_notification As Panel
-    Friend WithEvents Label4 As Label
+    Friend WithEvents lbl_notification As Label
+    Friend WithEvents pnl_parent As Panel
+    Friend WithEvents Timer1 As Timer
 End Class
