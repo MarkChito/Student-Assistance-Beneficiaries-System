@@ -1,0 +1,16 @@
+E:\Documents\Visual Studio 2022\Projects\Student Assistance Beneficiaries System\Student Assistance Beneficiaries System\obj\Debug\net6.0-windows\Student_Assistance_Beneficiaries_System.Login.resources
+E:\Documents\Visual Studio 2022\Projects\Student Assistance Beneficiaries System\Student Assistance Beneficiaries System\obj\Debug\net6.0-windows\Student Assistance Beneficiaries System.vbproj.GenerateResource.cache
+E:\Documents\Visual Studio 2022\Projects\Student Assistance Beneficiaries System\Student Assistance Beneficiaries System\obj\Debug\net6.0-windows\Student Assistance Beneficiaries System.GeneratedMSBuildEditorConfig.editorconfig
+E:\Documents\Visual Studio 2022\Projects\Student Assistance Beneficiaries System\Student Assistance Beneficiaries System\obj\Debug\net6.0-windows\Student Assistance Beneficiaries System.AssemblyInfoInputs.cache
+E:\Documents\Visual Studio 2022\Projects\Student Assistance Beneficiaries System\Student Assistance Beneficiaries System\obj\Debug\net6.0-windows\Student Assistance Beneficiaries System.AssemblyInfo.vb
+E:\Documents\Visual Studio 2022\Projects\Student Assistance Beneficiaries System\Student Assistance Beneficiaries System\obj\Debug\net6.0-windows\Student Assistance Beneficiaries System.vbproj.CoreCompileInputs.cache
+E:\Documents\Visual Studio 2022\Projects\Student Assistance Beneficiaries System\Student Assistance Beneficiaries System\bin\Debug\net6.0-windows\Student Assistance Beneficiaries System.exe
+E:\Documents\Visual Studio 2022\Projects\Student Assistance Beneficiaries System\Student Assistance Beneficiaries System\bin\Debug\net6.0-windows\Student Assistance Beneficiaries System.deps.json
+E:\Documents\Visual Studio 2022\Projects\Student Assistance Beneficiaries System\Student Assistance Beneficiaries System\bin\Debug\net6.0-windows\Student Assistance Beneficiaries System.runtimeconfig.json
+E:\Documents\Visual Studio 2022\Projects\Student Assistance Beneficiaries System\Student Assistance Beneficiaries System\bin\Debug\net6.0-windows\Student Assistance Beneficiaries System.dll
+E:\Documents\Visual Studio 2022\Projects\Student Assistance Beneficiaries System\Student Assistance Beneficiaries System\bin\Debug\net6.0-windows\Student Assistance Beneficiaries System.pdb
+E:\Documents\Visual Studio 2022\Projects\Student Assistance Beneficiaries System\Student Assistance Beneficiaries System\obj\Debug\net6.0-windows\Student Assistance Beneficiaries System.dll
+E:\Documents\Visual Studio 2022\Projects\Student Assistance Beneficiaries System\Student Assistance Beneficiaries System\obj\Debug\net6.0-windows\refint\Student Assistance Beneficiaries System.dll
+E:\Documents\Visual Studio 2022\Projects\Student Assistance Beneficiaries System\Student Assistance Beneficiaries System\obj\Debug\net6.0-windows\Student Assistance Beneficiaries System.pdb
+E:\Documents\Visual Studio 2022\Projects\Student Assistance Beneficiaries System\Student Assistance Beneficiaries System\obj\Debug\net6.0-windows\Student Assistance Beneficiaries System.genruntimeconfig.cache
+E:\Documents\Visual Studio 2022\Projects\Student Assistance Beneficiaries System\Student Assistance Beneficiaries System\obj\Debug\net6.0-windows\ref\Student Assistance Beneficiaries System.dll

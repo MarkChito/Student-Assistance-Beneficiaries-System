@@ -7,7 +7,12 @@
     <StartupObject>Sub Main</StartupObject>
     <UseWindowsForms>true</UseWindowsForms>
     <MyType>WindowsForms</MyType>
+    <ApplicationIcon>bin\Debug\net6.0-windows\dist\img\favicon.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="bin\Debug\net6.0-windows\dist\img\favicon.ico" />
+  </ItemGroup>
 
   <ItemGroup>
     <Import Include="System.Data" />
