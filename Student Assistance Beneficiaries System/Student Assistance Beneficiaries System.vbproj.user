@@ -4,5 +4,11 @@
     <Compile Update="Login.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Main.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="RFID_Login.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
 </Project>

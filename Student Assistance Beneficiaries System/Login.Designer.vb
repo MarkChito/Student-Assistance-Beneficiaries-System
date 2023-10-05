@@ -23,7 +23,7 @@ Partial Class Login
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As ComponentModel.ComponentResourceManager = New ComponentModel.ComponentResourceManager(GetType(Login))
-        pnl_parent = New Panel()
+        pnl_login_form = New Panel()
         Panel4 = New Panel()
         btn_sign_in_using_rfid_card = New Button()
         btn_sign_in = New Button()
@@ -41,7 +41,7 @@ Partial Class Login
         btn_temp = New Button()
         pnl_notification = New Panel()
         Label4 = New Label()
-        pnl_parent.SuspendLayout()
+        pnl_login_form.SuspendLayout()
         Panel4.SuspendLayout()
         CType(PictureBox3, ComponentModel.ISupportInitialize).BeginInit()
         CType(PictureBox2, ComponentModel.ISupportInitialize).BeginInit()
@@ -50,16 +50,16 @@ Partial Class Login
         pnl_notification.SuspendLayout()
         SuspendLayout()
         ' 
-        ' pnl_parent
+        ' pnl_login_form
         ' 
-        pnl_parent.BackColor = Color.Transparent
-        pnl_parent.Controls.Add(Panel4)
-        pnl_parent.Controls.Add(Panel3)
-        pnl_parent.Controls.Add(Panel2)
-        pnl_parent.Location = New Point(42, 70)
-        pnl_parent.Name = "pnl_parent"
-        pnl_parent.Size = New Size(400, 520)
-        pnl_parent.TabIndex = 0
+        pnl_login_form.BackColor = Color.Transparent
+        pnl_login_form.Controls.Add(Panel4)
+        pnl_login_form.Controls.Add(Panel3)
+        pnl_login_form.Controls.Add(Panel2)
+        pnl_login_form.Location = New Point(42, 97)
+        pnl_login_form.Name = "pnl_login_form"
+        pnl_login_form.Size = New Size(400, 520)
+        pnl_login_form.TabIndex = 0
         ' 
         ' Panel4
         ' 
@@ -239,7 +239,7 @@ Partial Class Login
         ' 
         pnl_notification.BackColor = Color.FromArgb(CByte(220), CByte(53), CByte(69))
         pnl_notification.Controls.Add(Label4)
-        pnl_notification.Location = New Point(42, 17)
+        pnl_notification.Location = New Point(42, 44)
         pnl_notification.Name = "pnl_notification"
         pnl_notification.Size = New Size(400, 50)
         pnl_notification.TabIndex = 1
@@ -267,13 +267,14 @@ Partial Class Login
         ClientSize = New Size(484, 661)
         Controls.Add(pnl_notification)
         Controls.Add(btn_temp)
-        Controls.Add(pnl_parent)
+        Controls.Add(pnl_login_form)
         Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point)
         Icon = CType(resources.GetObject("$this.Icon"), Icon)
+        MinimumSize = New Size(500, 700)
         Name = "Login"
         StartPosition = FormStartPosition.CenterScreen
         Text = "Administrator Login"
-        pnl_parent.ResumeLayout(False)
+        pnl_login_form.ResumeLayout(False)
         Panel4.ResumeLayout(False)
         Panel4.PerformLayout()
         CType(PictureBox3, ComponentModel.ISupportInitialize).EndInit()
@@ -286,7 +287,7 @@ Partial Class Login
         ResumeLayout(False)
     End Sub
 
-    Friend WithEvents pnl_parent As Panel
+    Friend WithEvents pnl_login_form As Panel
     Friend WithEvents Panel2 As Panel
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents Panel4 As Panel

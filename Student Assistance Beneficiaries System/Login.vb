@@ -1,4 +1,6 @@
-﻿Public Class Login
+﻿Imports System.Net
+
+Public Class Login
     Private is_loading As Boolean = False
 
     Private Sub CenterPanel(parent_object As Object, child_object As Object)
@@ -24,11 +26,61 @@
     Private Sub Sign_In()
         btn_temp.Focus()
 
-        btn_sign_in.Text = "Processing..."
+        If String.IsNullOrWhiteSpace(txt_username.Text) Then
+            btn_sign_in.Text = "Login"
+            remember_me.Enabled = True
+
+            MessageBox.Show("Please fill in the Username field.", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Error)
+
+            txt_username.Focus()
+        ElseIf String.IsNullOrWhiteSpace(txt_password.Text) Then
+            btn_sign_in.Text = "Login"
+            remember_me.Enabled = True
+
+            MessageBox.Show("Please fill in the Password field.", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Error)
+
+            txt_password.Focus()
+        Else
+            is_loading = True
+
+            Dim results = Authenticate(txt_username.Text, txt_password.Text)
+
+            Dim response_code = results("response_code")
+
+            If response_code = 200 Then
+                primary_key = results("primary_key")
+
+                Me.Hide()
+
+                With Main
+                    .Show()
+                    .WindowState = FormWindowState.Maximized
+                End With
+
+                remember_me.Enabled = True
+                btn_sign_in.Text = "Login"
+
+                is_loading = False
+
+                pnl_notification.Hide()
+            Else
+                is_loading = False
+
+                remember_me.Enabled = True
+                btn_sign_in.Text = "Login"
+
+                With pnl_notification
+                    .Location = New Point(pnl_login_form.Location.X, pnl_login_form.Location.Y - 53)
+                    pnl_notification.Show()
+                End With
+            End If
+        End If
     End Sub
 
     Private Sub Login_SizeChanged(sender As Object, e As EventArgs) Handles MyBase.SizeChanged
-        CenterPanel(ClientSize, pnl_parent)
+        CenterPanel(ClientSize, pnl_login_form)
+
+        pnl_notification.Location = New Point(pnl_login_form.Location.X, pnl_login_form.Location.Y - 53)
     End Sub
 
     Private Sub btn_sign_in_Paint(sender As Object, e As PaintEventArgs) Handles btn_sign_in.Paint
@@ -42,8 +94,27 @@
     Private Sub txt_password_KeyDown(sender As Object, e As KeyEventArgs) Handles txt_password.KeyDown
         If Not is_loading Then
             If e.KeyCode = Keys.Enter Then
+                btn_sign_in.Text = "Processing..."
+                remember_me.Enabled = False
+
                 Sign_In()
             End If
         End If
+    End Sub
+
+    Private Sub btn_sign_in_Click(sender As Object, e As EventArgs) Handles btn_sign_in.Click
+        If Not is_loading Then
+            Sign_In()
+        End If
+    End Sub
+
+    Private Sub Login_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Database_Open()
+        Database_Close()
+    End Sub
+
+    Private Sub btn_sign_in_MouseDown(sender As Object, e As MouseEventArgs) Handles btn_sign_in.MouseDown
+        btn_sign_in.Text = "Processing..."
+        remember_me.Enabled = False
     End Sub
 End Class
