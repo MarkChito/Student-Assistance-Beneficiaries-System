@@ -25,6 +25,7 @@ Partial Class Login
         Dim resources As ComponentModel.ComponentResourceManager = New ComponentModel.ComponentResourceManager(GetType(Login))
         Label1 = New Label()
         TextBox1 = New TextBox()
+        ListView1 = New ListView()
         SuspendLayout()
         ' 
         ' Label1
@@ -43,11 +44,20 @@ Partial Class Login
         TextBox1.Size = New Size(100, 23)
         TextBox1.TabIndex = 1
         ' 
+        ' ListView1
+        ' 
+        ListView1.Location = New Point(129, 202)
+        ListView1.Name = "ListView1"
+        ListView1.Size = New Size(121, 97)
+        ListView1.TabIndex = 2
+        ListView1.UseCompatibleStateImageBehavior = False
+        ' 
         ' Login
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(800, 450)
+        Controls.Add(ListView1)
         Controls.Add(TextBox1)
         Controls.Add(Label1)
         Icon = CType(resources.GetObject("$this.Icon"), Icon)
@@ -59,4 +69,5 @@ Partial Class Login
 
     Friend WithEvents Label1 As Label
     Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents ListView1 As ListView
 End Class
