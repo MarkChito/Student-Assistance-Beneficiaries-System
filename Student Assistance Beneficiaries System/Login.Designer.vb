@@ -24,6 +24,7 @@ Partial Class Login
     Private Sub InitializeComponent()
         Dim resources As ComponentModel.ComponentResourceManager = New ComponentModel.ComponentResourceManager(GetType(Login))
         Label1 = New Label()
+        TextBox1 = New TextBox()
         SuspendLayout()
         ' 
         ' Label1
@@ -35,11 +36,19 @@ Partial Class Login
         Label1.TabIndex = 0
         Label1.Text = "Label1"
         ' 
+        ' TextBox1
+        ' 
+        TextBox1.Location = New Point(298, 184)
+        TextBox1.Name = "TextBox1"
+        TextBox1.Size = New Size(100, 23)
+        TextBox1.TabIndex = 1
+        ' 
         ' Login
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(800, 450)
+        Controls.Add(TextBox1)
         Controls.Add(Label1)
         Icon = CType(resources.GetObject("$this.Icon"), Icon)
         Name = "Login"
@@ -49,4 +58,5 @@ Partial Class Login
     End Sub
 
     Friend WithEvents Label1 As Label
+    Friend WithEvents TextBox1 As TextBox
 End Class
