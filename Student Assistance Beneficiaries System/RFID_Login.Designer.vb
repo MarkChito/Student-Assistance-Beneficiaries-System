@@ -80,7 +80,7 @@ Partial Class RFID_Login
         btn_close.BackColor = Color.FromArgb(CByte(220), CByte(53), CByte(69))
         btn_close.Cursor = Cursors.Hand
         btn_close.FlatStyle = FlatStyle.Flat
-        btn_close.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        btn_close.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point)
         btn_close.ForeColor = Color.White
         btn_close.Location = New Point(304, 4)
         btn_close.Name = "btn_close"

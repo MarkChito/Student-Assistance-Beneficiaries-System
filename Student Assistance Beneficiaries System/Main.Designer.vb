@@ -50,6 +50,10 @@ Partial Class Main
         pnl_logo = New Panel()
         btn_temp = New Button()
         pnl_header = New Panel()
+        btn_temp_account = New Button()
+        Panel1 = New Panel()
+        img_user_image = New PictureBox()
+        btn_account = New Button()
         btn_toggle_sidebar = New PictureBox()
         pnl_footer = New Panel()
         Label5 = New Label()
@@ -58,11 +62,19 @@ Partial Class Main
         Label2 = New Label()
         Label1 = New Label()
         pnl_body = New Panel()
+        pnl_account_details = New Panel()
+        btn_logout_2 = New Button()
+        btn_developers = New Button()
+        btn_account_settings = New Button()
         pnl_sidebar.SuspendLayout()
         pnl_spacer.SuspendLayout()
         pnl_header.SuspendLayout()
+        Panel1.SuspendLayout()
+        CType(img_user_image, ComponentModel.ISupportInitialize).BeginInit()
         CType(btn_toggle_sidebar, ComponentModel.ISupportInitialize).BeginInit()
         pnl_footer.SuspendLayout()
+        pnl_body.SuspendLayout()
+        pnl_account_details.SuspendLayout()
         SuspendLayout()
         ' 
         ' pnl_sidebar
@@ -452,12 +464,64 @@ Partial Class Main
         ' pnl_header
         ' 
         pnl_header.BackColor = Color.White
+        pnl_header.Controls.Add(btn_temp_account)
+        pnl_header.Controls.Add(Panel1)
+        pnl_header.Controls.Add(btn_account)
         pnl_header.Controls.Add(btn_toggle_sidebar)
         pnl_header.Dock = DockStyle.Top
         pnl_header.Location = New Point(280, 0)
         pnl_header.Name = "pnl_header"
         pnl_header.Size = New Size(1054, 50)
         pnl_header.TabIndex = 2
+        ' 
+        ' btn_temp_account
+        ' 
+        btn_temp_account.Location = New Point(340, -70)
+        btn_temp_account.Name = "btn_temp_account"
+        btn_temp_account.Size = New Size(75, 23)
+        btn_temp_account.TabIndex = 1
+        btn_temp_account.Text = "Button1"
+        btn_temp_account.UseVisualStyleBackColor = True
+        ' 
+        ' Panel1
+        ' 
+        Panel1.Controls.Add(img_user_image)
+        Panel1.Dock = DockStyle.Right
+        Panel1.Location = New Point(853, 0)
+        Panel1.Name = "Panel1"
+        Panel1.Size = New Size(41, 50)
+        Panel1.TabIndex = 2
+        ' 
+        ' img_user_image
+        ' 
+        img_user_image.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        img_user_image.Cursor = Cursors.Hand
+        img_user_image.Image = CType(resources.GetObject("img_user_image.Image"), Image)
+        img_user_image.Location = New Point(3, 8)
+        img_user_image.Name = "img_user_image"
+        img_user_image.Size = New Size(35, 35)
+        img_user_image.SizeMode = PictureBoxSizeMode.StretchImage
+        img_user_image.TabIndex = 2
+        img_user_image.TabStop = False
+        ' 
+        ' btn_account
+        ' 
+        btn_account.AutoSize = True
+        btn_account.AutoSizeMode = AutoSizeMode.GrowAndShrink
+        btn_account.BackColor = Color.Transparent
+        btn_account.Cursor = Cursors.Hand
+        btn_account.Dock = DockStyle.Right
+        btn_account.FlatAppearance.BorderSize = 0
+        btn_account.FlatStyle = FlatStyle.Flat
+        btn_account.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        btn_account.ForeColor = Color.FromArgb(CByte(0), CByte(123), CByte(255))
+        btn_account.Location = New Point(894, 0)
+        btn_account.Name = "btn_account"
+        btn_account.Size = New Size(160, 50)
+        btn_account.TabIndex = 1
+        btn_account.Text = "Super Administrator"
+        btn_account.TextAlign = ContentAlignment.MiddleLeft
+        btn_account.UseVisualStyleBackColor = False
         ' 
         ' btn_toggle_sidebar
         ' 
@@ -549,11 +613,82 @@ Partial Class Main
         ' pnl_body
         ' 
         pnl_body.BackColor = Color.Transparent
+        pnl_body.Controls.Add(pnl_account_details)
         pnl_body.Dock = DockStyle.Fill
+        pnl_body.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point)
         pnl_body.Location = New Point(280, 50)
         pnl_body.Name = "pnl_body"
         pnl_body.Size = New Size(1054, 661)
         pnl_body.TabIndex = 4
+        ' 
+        ' pnl_account_details
+        ' 
+        pnl_account_details.BackColor = Color.White
+        pnl_account_details.Controls.Add(btn_logout_2)
+        pnl_account_details.Controls.Add(btn_developers)
+        pnl_account_details.Controls.Add(btn_account_settings)
+        pnl_account_details.Location = New Point(894, 6)
+        pnl_account_details.Name = "pnl_account_details"
+        pnl_account_details.Size = New Size(157, 108)
+        pnl_account_details.TabIndex = 0
+        pnl_account_details.Visible = False
+        ' 
+        ' btn_logout_2
+        ' 
+        btn_logout_2.Cursor = Cursors.Hand
+        btn_logout_2.Dock = DockStyle.Top
+        btn_logout_2.FlatAppearance.BorderSize = 0
+        btn_logout_2.FlatAppearance.MouseDownBackColor = Color.FromArgb(CByte(0), CByte(123), CByte(255))
+        btn_logout_2.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(244), CByte(246), CByte(249))
+        btn_logout_2.FlatStyle = FlatStyle.Flat
+        btn_logout_2.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        btn_logout_2.Image = CType(resources.GetObject("btn_logout_2.Image"), Image)
+        btn_logout_2.ImageAlign = ContentAlignment.MiddleLeft
+        btn_logout_2.Location = New Point(0, 70)
+        btn_logout_2.Name = "btn_logout_2"
+        btn_logout_2.Size = New Size(157, 35)
+        btn_logout_2.TabIndex = 2
+        btn_logout_2.Text = "          Logout"
+        btn_logout_2.TextAlign = ContentAlignment.MiddleLeft
+        btn_logout_2.UseVisualStyleBackColor = True
+        ' 
+        ' btn_developers
+        ' 
+        btn_developers.Cursor = Cursors.Hand
+        btn_developers.Dock = DockStyle.Top
+        btn_developers.FlatAppearance.BorderSize = 0
+        btn_developers.FlatAppearance.MouseDownBackColor = Color.FromArgb(CByte(0), CByte(123), CByte(255))
+        btn_developers.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(244), CByte(246), CByte(249))
+        btn_developers.FlatStyle = FlatStyle.Flat
+        btn_developers.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        btn_developers.Image = CType(resources.GetObject("btn_developers.Image"), Image)
+        btn_developers.ImageAlign = ContentAlignment.MiddleLeft
+        btn_developers.Location = New Point(0, 35)
+        btn_developers.Name = "btn_developers"
+        btn_developers.Size = New Size(157, 35)
+        btn_developers.TabIndex = 1
+        btn_developers.Text = "          Developers"
+        btn_developers.TextAlign = ContentAlignment.MiddleLeft
+        btn_developers.UseVisualStyleBackColor = True
+        ' 
+        ' btn_account_settings
+        ' 
+        btn_account_settings.Cursor = Cursors.Hand
+        btn_account_settings.Dock = DockStyle.Top
+        btn_account_settings.FlatAppearance.BorderSize = 0
+        btn_account_settings.FlatAppearance.MouseDownBackColor = Color.FromArgb(CByte(0), CByte(123), CByte(255))
+        btn_account_settings.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(244), CByte(246), CByte(249))
+        btn_account_settings.FlatStyle = FlatStyle.Flat
+        btn_account_settings.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        btn_account_settings.Image = CType(resources.GetObject("btn_account_settings.Image"), Image)
+        btn_account_settings.ImageAlign = ContentAlignment.MiddleLeft
+        btn_account_settings.Location = New Point(0, 0)
+        btn_account_settings.Name = "btn_account_settings"
+        btn_account_settings.Size = New Size(157, 35)
+        btn_account_settings.TabIndex = 0
+        btn_account_settings.Text = "          Account"
+        btn_account_settings.TextAlign = ContentAlignment.MiddleLeft
+        btn_account_settings.UseVisualStyleBackColor = True
         ' 
         ' Main
         ' 
@@ -576,9 +711,14 @@ Partial Class Main
         pnl_sidebar.ResumeLayout(False)
         pnl_spacer.ResumeLayout(False)
         pnl_header.ResumeLayout(False)
+        pnl_header.PerformLayout()
+        Panel1.ResumeLayout(False)
+        CType(img_user_image, ComponentModel.ISupportInitialize).EndInit()
         CType(btn_toggle_sidebar, ComponentModel.ISupportInitialize).EndInit()
         pnl_footer.ResumeLayout(False)
         pnl_footer.PerformLayout()
+        pnl_body.ResumeLayout(False)
+        pnl_account_details.ResumeLayout(False)
         ResumeLayout(False)
     End Sub
 
@@ -617,4 +757,12 @@ Partial Class Main
     Friend WithEvents Label5 As Label
     Friend WithEvents Label4 As Label
     Friend WithEvents btn_toggle_sidebar As PictureBox
+    Friend WithEvents btn_account As Button
+    Friend WithEvents img_user_image As PictureBox
+    Friend WithEvents Panel1 As Panel
+    Friend WithEvents pnl_account_details As Panel
+    Friend WithEvents btn_account_settings As Button
+    Friend WithEvents btn_logout_2 As Button
+    Friend WithEvents btn_developers As Button
+    Friend WithEvents btn_temp_account As Button
 End Class

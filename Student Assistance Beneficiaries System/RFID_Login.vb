@@ -46,6 +46,7 @@
 
                     With Main
                         .Show()
+                        .btn_account.Text = results("name")
                         .Mouse_Click(.btn_dashboard)
                         .WindowState = FormWindowState.Maximized
                     End With

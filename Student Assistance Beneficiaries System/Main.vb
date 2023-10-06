@@ -4,6 +4,8 @@
     Private is_scholarship_open As Boolean = False
     Private is_scholarship_selected As Boolean = False
     Private is_sidebar_open As Boolean = True
+    Private pnl_account_details_visible As Boolean = False
+    Private is_account_buttons_clicked As Boolean = False
 
     Public Sub Mouse_Click(button As Button)
         btn_temp.Focus()
@@ -263,6 +265,8 @@
     Private Sub Logout()
         btn_temp.Focus()
 
+        Hide_Account_Details()
+
         primary_key = Nothing
 
         Me.Hide()
@@ -341,6 +345,11 @@
         End With
     End Sub
 
+    Public Sub Hide_Account_Details()
+        pnl_account_details_visible = False
+        pnl_account_details.Visible = False
+    End Sub
+
     Private Sub btn_educational_Click(sender As Object, e As EventArgs) Handles btn_educational.Click
         Mouse_Click(btn_educational)
     End Sub
@@ -357,6 +366,11 @@
         btn_educational.FlatAppearance.MouseDownBackColor = btn_scholarship.BackColor
         btn_scholarship.FlatAppearance.MouseDownBackColor = btn_scholarship.BackColor
         btn_logout.FlatAppearance.MouseDownBackColor = btn_logout.BackColor
+
+        With btn_account
+            .FlatAppearance.MouseOverBackColor = .BackColor
+            .FlatAppearance.MouseDownBackColor = .BackColor
+        End With
     End Sub
 
     Private Sub Main_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
@@ -402,6 +416,8 @@
     End Sub
 
     Private Sub btn_toggle_sidebar_Click(sender As Object, e As EventArgs) Handles btn_toggle_sidebar.Click
+        btn_temp.Focus()
+
         If is_sidebar_open Then
             pnl_sidebar.Width = 80
 
@@ -449,6 +465,8 @@
 
     Private Sub pnl_sidebar_MouseEnter(sender As Object, e As EventArgs) Handles pnl_sidebar.MouseEnter, pnl_logo.MouseEnter, btn_dashboard.MouseEnter, btn_scan_qr_code.MouseEnter, btn_educational.MouseEnter, btn_educational_pending.MouseEnter, btn_educational_approved.MouseEnter, btn_educational_rejected.MouseEnter, btn_scholarship.MouseEnter, btn_scholarship_pending.MouseEnter, btn_scholarship_approved.MouseEnter, btn_scholarship_rejected.MouseEnter, btn_logout.MouseEnter, pnl_dashboard_spacer.MouseEnter, pnl_scan_qr_code_spacer.MouseEnter, pnl_educational_spacer.MouseEnter, pnl_educational_spacer_1.MouseEnter, pnl_educational_spacer_2.MouseEnter, pnl_educational_spacer_3.MouseEnter, pnl_scholarship_spacer.MouseEnter, pnl_scholarship_spacer_1.MouseEnter, pnl_scholarship_spacer_2.MouseEnter, pnl_scholarship_spacer_3.MouseEnter, pnl_spacer.MouseEnter
         If Not is_sidebar_open Then
+            Hide_Account_Details()
+
             pnl_sidebar.Width = 280
 
             btn_dashboard.ImageAlign = ContentAlignment.MiddleLeft
@@ -481,5 +499,67 @@
             btn_scholarship_rejected.ImageAlign = ContentAlignment.MiddleCenter
             btn_logout.ImageAlign = ContentAlignment.MiddleCenter
         End If
+    End Sub
+
+    Private Sub img_user_image_Click(sender As Object, e As EventArgs) Handles img_user_image.Click
+        btn_account.PerformClick()
+    End Sub
+
+    Private Sub btn_account_Click(sender As Object, e As EventArgs) Handles btn_account.Click
+        pnl_account_details_visible = True
+
+        With pnl_account_details
+            .Visible = True
+            .Location = New Point(pnl_body.Width - pnl_account_details.Width - 5, btn_account.Location.Y + 6)
+            .BringToFront()
+        End With
+
+        btn_temp_account.Focus()
+    End Sub
+
+    Private Sub btn_logout_2_Click(sender As Object, e As EventArgs) Handles btn_logout_2.Click
+        Logout()
+    End Sub
+
+    Private Sub btn_temp_account_LostFocus(sender As Object, e As EventArgs) Handles btn_temp_account.LostFocus
+        If Not is_account_buttons_clicked Then
+            Hide_Account_Details()
+        End If
+    End Sub
+
+    Private Sub btn_account_settings_MouseEnter(sender As Object, e As EventArgs) Handles btn_developers.MouseEnter, btn_account_settings.MouseEnter, btn_developers.Enter, btn_account_settings.Enter, btn_logout_2.MouseEnter, btn_logout_2.Enter
+        is_account_buttons_clicked = True
+    End Sub
+
+    Private Sub btn_account_settings_MouseLeave(sender As Object, e As EventArgs) Handles btn_developers.MouseLeave, btn_account_settings.MouseLeave, btn_developers.Leave, btn_account_settings.Leave, btn_logout_2.MouseLeave, btn_logout_2.Leave
+        is_account_buttons_clicked = False
+    End Sub
+
+    Private Sub btn_account_settings_Click(sender As Object, e As EventArgs) Handles btn_account_settings.Click
+        btn_temp.Focus()
+
+        Hide_Account_Details()
+
+        Dim result = Get_User_Data(primary_key)
+
+        With Account_Settings
+            .txt_name.Text = result("name")
+            .txt_rfid_number.Text = result("rfid_number")
+            .txt_username.Text = result("username")
+
+            .old_rfid_number = result("rfid_number")
+            .old_username = result("username")
+            .old_password = result("password")
+
+            .ShowDialog()
+        End With
+    End Sub
+
+    Private Sub btn_developers_Click(sender As Object, e As EventArgs) Handles btn_developers.Click
+        btn_temp.Focus()
+
+        Hide_Account_Details()
+
+        Developers.ShowDialog()
     End Sub
 End Class
