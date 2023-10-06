@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Client\\Source\\Repos\\Student-Assistance-Beneficiaries-System-Desktop-App\\Student Assistance Beneficiaries System\\Student Assistance Beneficiaries System.vbproj": {}
+    "C:\\Users\\Client\\source\\repos\\Student-Assistance-Beneficiaries-System-Desktop-App\\Student Assistance Beneficiaries System\\Student Assistance Beneficiaries System.vbproj": {}
   },
   "projects": {
-    "C:\\Users\\Client\\Source\\Repos\\Student-Assistance-Beneficiaries-System-Desktop-App\\Student Assistance Beneficiaries System\\Student Assistance Beneficiaries System.vbproj": {
+    "C:\\Users\\Client\\source\\repos\\Student-Assistance-Beneficiaries-System-Desktop-App\\Student Assistance Beneficiaries System\\Student Assistance Beneficiaries System.vbproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Client\\Source\\Repos\\Student-Assistance-Beneficiaries-System-Desktop-App\\Student Assistance Beneficiaries System\\Student Assistance Beneficiaries System.vbproj",
+        "projectUniqueName": "C:\\Users\\Client\\source\\repos\\Student-Assistance-Beneficiaries-System-Desktop-App\\Student Assistance Beneficiaries System\\Student Assistance Beneficiaries System.vbproj",
         "projectName": "Student Assistance Beneficiaries System",
-        "projectPath": "C:\\Users\\Client\\Source\\Repos\\Student-Assistance-Beneficiaries-System-Desktop-App\\Student Assistance Beneficiaries System\\Student Assistance Beneficiaries System.vbproj",
+        "projectPath": "C:\\Users\\Client\\source\\repos\\Student-Assistance-Beneficiaries-System-Desktop-App\\Student Assistance Beneficiaries System\\Student Assistance Beneficiaries System.vbproj",
         "packagesPath": "C:\\Users\\Client\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Client\\Source\\Repos\\Student-Assistance-Beneficiaries-System-Desktop-App\\Student Assistance Beneficiaries System\\obj\\",
+        "outputPath": "C:\\Users\\Client\\source\\repos\\Student-Assistance-Beneficiaries-System-Desktop-App\\Student Assistance Beneficiaries System\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Client\\AppData\\Roaming\\NuGet\\NuGet.Config",
