@@ -19,5 +19,8 @@
     <Compile Update="RFID_Login.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="scanqrcode.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
 </Project>
