@@ -4,20 +4,8 @@
     <Compile Update="Account Settings.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Dashboard.vb">
-      <SubType>UserControl</SubType>
-    </Compile>
     <Compile Update="Developers.vb">
       <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="educ_approved.vb">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="educ_pending.vb">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="educ_rejected.vb">
-      <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="Login.vb">
       <SubType>Form</SubType>
@@ -27,18 +15,6 @@
     </Compile>
     <Compile Update="RFID_Login.vb">
       <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="scanqrcode.vb">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="scholar_approved.vb">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="scholar_pending.vb">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="scholar_rejectedvb.vb">
-      <SubType>UserControl</SubType>
     </Compile>
   </ItemGroup>
 </Project>

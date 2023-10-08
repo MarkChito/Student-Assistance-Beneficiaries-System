@@ -89,3 +89,52 @@ C:\Users\Client\source\repos\Student-Assistance-Beneficiaries-System-Desktop-App
 C:\Users\Client\source\repos\Student-Assistance-Beneficiaries-System-Desktop-App\Student Assistance Beneficiaries System\obj\Debug\net6.0-windows\Student_Assistance_Beneficiaries_System.scholar_pending.resources
 C:\Users\Client\source\repos\Student-Assistance-Beneficiaries-System-Desktop-App\Student Assistance Beneficiaries System\obj\Debug\net6.0-windows\Student_Assistance_Beneficiaries_System.scholar_approved.resources
 C:\Users\Client\source\repos\Student-Assistance-Beneficiaries-System-Desktop-App\Student Assistance Beneficiaries System\obj\Debug\net6.0-windows\Student_Assistance_Beneficiaries_System.scholar_rejectedvb.resources
+C:\Users\Admin\Source\Repos\Student-Assistance-Beneficiaries-System-Desktop-App\Student Assistance Beneficiaries System\bin\Debug\net6.0-windows\Student Assistance Beneficiaries System.exe
+C:\Users\Admin\Source\Repos\Student-Assistance-Beneficiaries-System-Desktop-App\Student Assistance Beneficiaries System\bin\Debug\net6.0-windows\Student Assistance Beneficiaries System.deps.json
+C:\Users\Admin\Source\Repos\Student-Assistance-Beneficiaries-System-Desktop-App\Student Assistance Beneficiaries System\bin\Debug\net6.0-windows\Student Assistance Beneficiaries System.runtimeconfig.json
+C:\Users\Admin\Source\Repos\Student-Assistance-Beneficiaries-System-Desktop-App\Student Assistance Beneficiaries System\bin\Debug\net6.0-windows\Student Assistance Beneficiaries System.dll
+C:\Users\Admin\Source\Repos\Student-Assistance-Beneficiaries-System-Desktop-App\Student Assistance Beneficiaries System\bin\Debug\net6.0-windows\Student Assistance Beneficiaries System.pdb
+C:\Users\Admin\Source\Repos\Student-Assistance-Beneficiaries-System-Desktop-App\Student Assistance Beneficiaries System\bin\Debug\net6.0-windows\BCrypt.Net-Core.dll
+C:\Users\Admin\Source\Repos\Student-Assistance-Beneficiaries-System-Desktop-App\Student Assistance Beneficiaries System\bin\Debug\net6.0-windows\Google.Protobuf.dll
+C:\Users\Admin\Source\Repos\Student-Assistance-Beneficiaries-System-Desktop-App\Student Assistance Beneficiaries System\bin\Debug\net6.0-windows\K4os.Compression.LZ4.dll
+C:\Users\Admin\Source\Repos\Student-Assistance-Beneficiaries-System-Desktop-App\Student Assistance Beneficiaries System\bin\Debug\net6.0-windows\K4os.Compression.LZ4.Streams.dll
+C:\Users\Admin\Source\Repos\Student-Assistance-Beneficiaries-System-Desktop-App\Student Assistance Beneficiaries System\bin\Debug\net6.0-windows\K4os.Hash.xxHash.dll
+C:\Users\Admin\Source\Repos\Student-Assistance-Beneficiaries-System-Desktop-App\Student Assistance Beneficiaries System\bin\Debug\net6.0-windows\MySql.Data.dll
+C:\Users\Admin\Source\Repos\Student-Assistance-Beneficiaries-System-Desktop-App\Student Assistance Beneficiaries System\bin\Debug\net6.0-windows\BouncyCastle.Crypto.dll
+C:\Users\Admin\Source\Repos\Student-Assistance-Beneficiaries-System-Desktop-App\Student Assistance Beneficiaries System\bin\Debug\net6.0-windows\System.Diagnostics.DiagnosticSource.dll
+C:\Users\Admin\Source\Repos\Student-Assistance-Beneficiaries-System-Desktop-App\Student Assistance Beneficiaries System\bin\Debug\net6.0-windows\System.IO.Pipelines.dll
+C:\Users\Admin\Source\Repos\Student-Assistance-Beneficiaries-System-Desktop-App\Student Assistance Beneficiaries System\bin\Debug\net6.0-windows\System.Text.Encodings.Web.dll
+C:\Users\Admin\Source\Repos\Student-Assistance-Beneficiaries-System-Desktop-App\Student Assistance Beneficiaries System\bin\Debug\net6.0-windows\System.Text.Json.dll
+C:\Users\Admin\Source\Repos\Student-Assistance-Beneficiaries-System-Desktop-App\Student Assistance Beneficiaries System\bin\Debug\net6.0-windows\ZstdSharp.dll
+C:\Users\Admin\Source\Repos\Student-Assistance-Beneficiaries-System-Desktop-App\Student Assistance Beneficiaries System\bin\Debug\net6.0-windows\runtimes\win-x64\native\comerr64.dll
+C:\Users\Admin\Source\Repos\Student-Assistance-Beneficiaries-System-Desktop-App\Student Assistance Beneficiaries System\bin\Debug\net6.0-windows\runtimes\win-x64\native\gssapi64.dll
+C:\Users\Admin\Source\Repos\Student-Assistance-Beneficiaries-System-Desktop-App\Student Assistance Beneficiaries System\bin\Debug\net6.0-windows\runtimes\win-x64\native\k5sprt64.dll
+C:\Users\Admin\Source\Repos\Student-Assistance-Beneficiaries-System-Desktop-App\Student Assistance Beneficiaries System\bin\Debug\net6.0-windows\runtimes\win-x64\native\krb5_64.dll
+C:\Users\Admin\Source\Repos\Student-Assistance-Beneficiaries-System-Desktop-App\Student Assistance Beneficiaries System\bin\Debug\net6.0-windows\runtimes\win-x64\native\krbcc64.dll
+C:\Users\Admin\Source\Repos\Student-Assistance-Beneficiaries-System-Desktop-App\Student Assistance Beneficiaries System\bin\Debug\net6.0-windows\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
+C:\Users\Admin\Source\Repos\Student-Assistance-Beneficiaries-System-Desktop-App\Student Assistance Beneficiaries System\obj\Debug\net6.0-windows\Student Assistance Beneficiaries System.vbproj.AssemblyReference.cache
+C:\Users\Admin\Source\Repos\Student-Assistance-Beneficiaries-System-Desktop-App\Student Assistance Beneficiaries System\obj\Debug\net6.0-windows\Student_Assistance_Beneficiaries_System.Account_Settings.resources
+C:\Users\Admin\Source\Repos\Student-Assistance-Beneficiaries-System-Desktop-App\Student Assistance Beneficiaries System\obj\Debug\net6.0-windows\Student_Assistance_Beneficiaries_System.Dashboard.resources
+C:\Users\Admin\Source\Repos\Student-Assistance-Beneficiaries-System-Desktop-App\Student Assistance Beneficiaries System\obj\Debug\net6.0-windows\Student_Assistance_Beneficiaries_System.Developers.resources
+C:\Users\Admin\Source\Repos\Student-Assistance-Beneficiaries-System-Desktop-App\Student Assistance Beneficiaries System\obj\Debug\net6.0-windows\Student_Assistance_Beneficiaries_System.educ_approved.resources
+C:\Users\Admin\Source\Repos\Student-Assistance-Beneficiaries-System-Desktop-App\Student Assistance Beneficiaries System\obj\Debug\net6.0-windows\Student_Assistance_Beneficiaries_System.educ_pending.resources
+C:\Users\Admin\Source\Repos\Student-Assistance-Beneficiaries-System-Desktop-App\Student Assistance Beneficiaries System\obj\Debug\net6.0-windows\Student_Assistance_Beneficiaries_System.educ_rejected.resources
+C:\Users\Admin\Source\Repos\Student-Assistance-Beneficiaries-System-Desktop-App\Student Assistance Beneficiaries System\obj\Debug\net6.0-windows\Student_Assistance_Beneficiaries_System.Login.resources
+C:\Users\Admin\Source\Repos\Student-Assistance-Beneficiaries-System-Desktop-App\Student Assistance Beneficiaries System\obj\Debug\net6.0-windows\Student_Assistance_Beneficiaries_System.Main.resources
+C:\Users\Admin\Source\Repos\Student-Assistance-Beneficiaries-System-Desktop-App\Student Assistance Beneficiaries System\obj\Debug\net6.0-windows\Student_Assistance_Beneficiaries_System.Resources.resources
+C:\Users\Admin\Source\Repos\Student-Assistance-Beneficiaries-System-Desktop-App\Student Assistance Beneficiaries System\obj\Debug\net6.0-windows\Student_Assistance_Beneficiaries_System.RFID_Login.resources
+C:\Users\Admin\Source\Repos\Student-Assistance-Beneficiaries-System-Desktop-App\Student Assistance Beneficiaries System\obj\Debug\net6.0-windows\Student_Assistance_Beneficiaries_System.scanqrcode.resources
+C:\Users\Admin\Source\Repos\Student-Assistance-Beneficiaries-System-Desktop-App\Student Assistance Beneficiaries System\obj\Debug\net6.0-windows\Student_Assistance_Beneficiaries_System.scholar_approved.resources
+C:\Users\Admin\Source\Repos\Student-Assistance-Beneficiaries-System-Desktop-App\Student Assistance Beneficiaries System\obj\Debug\net6.0-windows\Student_Assistance_Beneficiaries_System.scholar_pending.resources
+C:\Users\Admin\Source\Repos\Student-Assistance-Beneficiaries-System-Desktop-App\Student Assistance Beneficiaries System\obj\Debug\net6.0-windows\Student_Assistance_Beneficiaries_System.scholar_rejectedvb.resources
+C:\Users\Admin\Source\Repos\Student-Assistance-Beneficiaries-System-Desktop-App\Student Assistance Beneficiaries System\obj\Debug\net6.0-windows\Student Assistance Beneficiaries System.vbproj.GenerateResource.cache
+C:\Users\Admin\Source\Repos\Student-Assistance-Beneficiaries-System-Desktop-App\Student Assistance Beneficiaries System\obj\Debug\net6.0-windows\Student Assistance Beneficiaries System.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Admin\Source\Repos\Student-Assistance-Beneficiaries-System-Desktop-App\Student Assistance Beneficiaries System\obj\Debug\net6.0-windows\Student Assistance Beneficiaries System.AssemblyInfoInputs.cache
+C:\Users\Admin\Source\Repos\Student-Assistance-Beneficiaries-System-Desktop-App\Student Assistance Beneficiaries System\obj\Debug\net6.0-windows\Student Assistance Beneficiaries System.AssemblyInfo.vb
+C:\Users\Admin\Source\Repos\Student-Assistance-Beneficiaries-System-Desktop-App\Student Assistance Beneficiaries System\obj\Debug\net6.0-windows\Student Assistance Beneficiaries System.vbproj.CoreCompileInputs.cache
+C:\Users\Admin\Source\Repos\Student-Assistance-Beneficiaries-System-Desktop-App\Student Assistance Beneficiaries System\obj\Debug\net6.0-windows\Student Assistance Beneficiaries System.vbproj.CopyComplete
+C:\Users\Admin\Source\Repos\Student-Assistance-Beneficiaries-System-Desktop-App\Student Assistance Beneficiaries System\obj\Debug\net6.0-windows\Student Assistance Beneficiaries System.dll
+C:\Users\Admin\Source\Repos\Student-Assistance-Beneficiaries-System-Desktop-App\Student Assistance Beneficiaries System\obj\Debug\net6.0-windows\refint\Student Assistance Beneficiaries System.dll
+C:\Users\Admin\Source\Repos\Student-Assistance-Beneficiaries-System-Desktop-App\Student Assistance Beneficiaries System\obj\Debug\net6.0-windows\Student Assistance Beneficiaries System.pdb
+C:\Users\Admin\Source\Repos\Student-Assistance-Beneficiaries-System-Desktop-App\Student Assistance Beneficiaries System\obj\Debug\net6.0-windows\Student Assistance Beneficiaries System.genruntimeconfig.cache
+C:\Users\Admin\Source\Repos\Student-Assistance-Beneficiaries-System-Desktop-App\Student Assistance Beneficiaries System\obj\Debug\net6.0-windows\ref\Student Assistance Beneficiaries System.dll
