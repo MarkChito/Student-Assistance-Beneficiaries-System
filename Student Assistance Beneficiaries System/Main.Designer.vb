@@ -22,6 +22,7 @@ Partial Class Main
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        components = New ComponentModel.Container()
         Dim resources As ComponentModel.ComponentResourceManager = New ComponentModel.ComponentResourceManager(GetType(Main))
         pnl_sidebar = New Panel()
         btn_logout = New Button()
@@ -50,7 +51,6 @@ Partial Class Main
         pnl_logo = New Panel()
         btn_temp = New Button()
         pnl_header = New Panel()
-        btn_temp_account = New Button()
         Panel1 = New Panel()
         img_user_image = New PictureBox()
         btn_account = New Button()
@@ -62,10 +62,17 @@ Partial Class Main
         Label2 = New Label()
         Label1 = New Label()
         pnl_body = New Panel()
+        Dashboard = New Dashboard()
         pnl_account_details = New Panel()
         btn_logout_2 = New Button()
         btn_developers = New Button()
         btn_account_settings = New Button()
+        Scan_QR_Code = New Scan_QR_Code()
+        img_loading = New PictureBox()
+        Pending = New Pending()
+        Approved = New Approved()
+        Rejected = New Rejected()
+        Timer1 = New Timer(components)
         pnl_sidebar.SuspendLayout()
         pnl_spacer.SuspendLayout()
         pnl_header.SuspendLayout()
@@ -75,6 +82,7 @@ Partial Class Main
         pnl_footer.SuspendLayout()
         pnl_body.SuspendLayout()
         pnl_account_details.SuspendLayout()
+        CType(img_loading, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' pnl_sidebar
@@ -464,7 +472,6 @@ Partial Class Main
         ' pnl_header
         ' 
         pnl_header.BackColor = Color.White
-        pnl_header.Controls.Add(btn_temp_account)
         pnl_header.Controls.Add(Panel1)
         pnl_header.Controls.Add(btn_account)
         pnl_header.Controls.Add(btn_toggle_sidebar)
@@ -474,18 +481,10 @@ Partial Class Main
         pnl_header.Size = New Size(1054, 50)
         pnl_header.TabIndex = 2
         ' 
-        ' btn_temp_account
-        ' 
-        btn_temp_account.Location = New Point(340, -70)
-        btn_temp_account.Name = "btn_temp_account"
-        btn_temp_account.Size = New Size(75, 23)
-        btn_temp_account.TabIndex = 1
-        btn_temp_account.Text = "Button1"
-        btn_temp_account.UseVisualStyleBackColor = True
-        ' 
         ' Panel1
         ' 
         Panel1.Controls.Add(img_user_image)
+        Panel1.Cursor = Cursors.Hand
         Panel1.Dock = DockStyle.Right
         Panel1.Location = New Point(853, 0)
         Panel1.Name = "Panel1"
@@ -613,13 +612,29 @@ Partial Class Main
         ' pnl_body
         ' 
         pnl_body.BackColor = Color.Transparent
+        pnl_body.Controls.Add(Dashboard)
         pnl_body.Controls.Add(pnl_account_details)
+        pnl_body.Controls.Add(Scan_QR_Code)
+        pnl_body.Controls.Add(img_loading)
+        pnl_body.Controls.Add(Pending)
+        pnl_body.Controls.Add(Approved)
+        pnl_body.Controls.Add(Rejected)
         pnl_body.Dock = DockStyle.Fill
         pnl_body.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point)
         pnl_body.Location = New Point(280, 50)
         pnl_body.Name = "pnl_body"
         pnl_body.Size = New Size(1054, 661)
         pnl_body.TabIndex = 4
+        ' 
+        ' Dashboard
+        ' 
+        Dashboard.BackColor = Color.FromArgb(CByte(244), CByte(246), CByte(249))
+        Dashboard.Dock = DockStyle.Fill
+        Dashboard.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        Dashboard.Location = New Point(0, 0)
+        Dashboard.Name = "Dashboard"
+        Dashboard.Size = New Size(1054, 661)
+        Dashboard.TabIndex = 1
         ' 
         ' pnl_account_details
         ' 
@@ -690,6 +705,62 @@ Partial Class Main
         btn_account_settings.TextAlign = ContentAlignment.MiddleLeft
         btn_account_settings.UseVisualStyleBackColor = True
         ' 
+        ' Scan_QR_Code
+        ' 
+        Scan_QR_Code.BackColor = Color.FromArgb(CByte(244), CByte(246), CByte(249))
+        Scan_QR_Code.Dock = DockStyle.Fill
+        Scan_QR_Code.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        Scan_QR_Code.Location = New Point(0, 0)
+        Scan_QR_Code.Name = "Scan_QR_Code"
+        Scan_QR_Code.Size = New Size(1054, 661)
+        Scan_QR_Code.TabIndex = 0
+        Scan_QR_Code.Visible = False
+        ' 
+        ' img_loading
+        ' 
+        img_loading.Dock = DockStyle.Fill
+        img_loading.Image = CType(resources.GetObject("img_loading.Image"), Image)
+        img_loading.Location = New Point(0, 0)
+        img_loading.Name = "img_loading"
+        img_loading.Size = New Size(1054, 661)
+        img_loading.SizeMode = PictureBoxSizeMode.CenterImage
+        img_loading.TabIndex = 2
+        img_loading.TabStop = False
+        ' 
+        ' Pending
+        ' 
+        Pending.BackColor = Color.FromArgb(CByte(244), CByte(246), CByte(249))
+        Pending.Dock = DockStyle.Fill
+        Pending.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        Pending.Location = New Point(0, 0)
+        Pending.Name = "Pending"
+        Pending.Size = New Size(1054, 661)
+        Pending.TabIndex = 0
+        ' 
+        ' Approved
+        ' 
+        Approved.BackColor = Color.FromArgb(CByte(244), CByte(246), CByte(249))
+        Approved.Dock = DockStyle.Fill
+        Approved.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        Approved.Location = New Point(0, 0)
+        Approved.Name = "Approved"
+        Approved.Size = New Size(1054, 661)
+        Approved.TabIndex = 0
+        ' 
+        ' Rejected
+        ' 
+        Rejected.BackColor = Color.FromArgb(CByte(244), CByte(246), CByte(249))
+        Rejected.Dock = DockStyle.Fill
+        Rejected.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        Rejected.Location = New Point(0, 0)
+        Rejected.Name = "Rejected"
+        Rejected.Size = New Size(1054, 661)
+        Rejected.TabIndex = 0
+        ' 
+        ' Timer1
+        ' 
+        Timer1.Interval = 500
+        ' 
         ' Main
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
@@ -719,6 +790,7 @@ Partial Class Main
         pnl_footer.PerformLayout()
         pnl_body.ResumeLayout(False)
         pnl_account_details.ResumeLayout(False)
+        CType(img_loading, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
     End Sub
 
@@ -764,5 +836,11 @@ Partial Class Main
     Friend WithEvents btn_account_settings As Button
     Friend WithEvents btn_logout_2 As Button
     Friend WithEvents btn_developers As Button
-    Friend WithEvents btn_temp_account As Button
+    Friend WithEvents Dashboard As Dashboard
+    Friend WithEvents Scan_QR_Code As Scan_QR_Code
+    Friend WithEvents img_loading As PictureBox
+    Friend WithEvents Timer1 As Timer
+    Friend WithEvents Pending As Pending
+    Friend WithEvents Approved As Approved
+    Friend WithEvents Rejected As Rejected
 End Class

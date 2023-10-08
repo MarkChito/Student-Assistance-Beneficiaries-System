@@ -4,8 +4,17 @@
     <Compile Update="Account Settings.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Approved.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Dashboard.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="Developers.vb">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Pending.vb">
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="Login.vb">
       <SubType>Form</SubType>
@@ -13,8 +22,14 @@
     <Compile Update="Main.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Rejected.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="RFID_Login.vb">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Scan QR Code.vb">
+      <SubType>UserControl</SubType>
     </Compile>
   </ItemGroup>
 </Project>

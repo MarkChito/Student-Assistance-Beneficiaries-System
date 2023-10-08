@@ -37,7 +37,6 @@ E:\Documents\Visual Studio 2022\Projects\Student Assistance Beneficiaries System
 E:\Documents\Visual Studio 2022\Projects\Student Assistance Beneficiaries System\Student Assistance Beneficiaries System\obj\Debug\net6.0-windows\Student Assistance Beneficiaries System.vbproj.CopyComplete
 E:\Documents\Visual Studio 2022\Projects\Student Assistance Beneficiaries System\Student Assistance Beneficiaries System\obj\Debug\net6.0-windows\Student_Assistance_Beneficiaries_System.Main.resources
 E:\Documents\Visual Studio 2022\Projects\Student Assistance Beneficiaries System\Student Assistance Beneficiaries System\obj\Debug\net6.0-windows\Student_Assistance_Beneficiaries_System.RFID_Login.resources
-E:\Documents\Visual Studio 2022\Projects\Student Assistance Beneficiaries System\Student Assistance Beneficiaries System\obj\Debug\net6.0-windows\Student_Assistance_Beneficiaries_System.Dashboard.resources
 E:\Documents\Visual Studio 2022\Projects\Student Assistance Beneficiaries System\Student Assistance Beneficiaries System\obj\Debug\net6.0-windows\Student_Assistance_Beneficiaries_System.Developers.resources
 E:\Documents\Visual Studio 2022\Projects\Student Assistance Beneficiaries System\Student Assistance Beneficiaries System\obj\Debug\net6.0-windows\Student_Assistance_Beneficiaries_System.Account_Settings.resources
 C:\Users\Client\Source\Repos\Student-Assistance-Beneficiaries-System-Desktop-App\Student Assistance Beneficiaries System\bin\Debug\net6.0-windows\Student Assistance Beneficiaries System.exe
@@ -138,3 +137,8 @@ C:\Users\Admin\Source\Repos\Student-Assistance-Beneficiaries-System-Desktop-App\
 C:\Users\Admin\Source\Repos\Student-Assistance-Beneficiaries-System-Desktop-App\Student Assistance Beneficiaries System\obj\Debug\net6.0-windows\Student Assistance Beneficiaries System.pdb
 C:\Users\Admin\Source\Repos\Student-Assistance-Beneficiaries-System-Desktop-App\Student Assistance Beneficiaries System\obj\Debug\net6.0-windows\Student Assistance Beneficiaries System.genruntimeconfig.cache
 C:\Users\Admin\Source\Repos\Student-Assistance-Beneficiaries-System-Desktop-App\Student Assistance Beneficiaries System\obj\Debug\net6.0-windows\ref\Student Assistance Beneficiaries System.dll
+E:\Documents\Visual Studio 2022\Projects\Student Assistance Beneficiaries System\Student Assistance Beneficiaries System\obj\Debug\net6.0-windows\Student_Assistance_Beneficiaries_System.Dashboard.resources
+E:\Documents\Visual Studio 2022\Projects\Student Assistance Beneficiaries System\Student Assistance Beneficiaries System\obj\Debug\net6.0-windows\Student_Assistance_Beneficiaries_System.Scan_QR_Code.resources
+E:\Documents\Visual Studio 2022\Projects\Student Assistance Beneficiaries System\Student Assistance Beneficiaries System\obj\Debug\net6.0-windows\Student_Assistance_Beneficiaries_System.Approved.resources
+E:\Documents\Visual Studio 2022\Projects\Student Assistance Beneficiaries System\Student Assistance Beneficiaries System\obj\Debug\net6.0-windows\Student_Assistance_Beneficiaries_System.Pending.resources
+E:\Documents\Visual Studio 2022\Projects\Student Assistance Beneficiaries System\Student Assistance Beneficiaries System\obj\Debug\net6.0-windows\Student_Assistance_Beneficiaries_System.Rejected.resources

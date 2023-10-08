@@ -3,12 +3,14 @@
     Private is_educational_selected As Boolean = False
     Private is_scholarship_open As Boolean = False
     Private is_scholarship_selected As Boolean = False
-    Private is_sidebar_open As Boolean = True
-    Private pnl_account_details_visible As Boolean = False
-    Private is_account_buttons_clicked As Boolean = False
+    Public is_sidebar_open As Boolean = True
+    Public pnl_account_details_visible As Boolean = False
+    Public button_name As String = Nothing
 
     Public Sub Mouse_Click(button As Button)
-        btn_temp.Focus()
+        button_name = button.Name
+
+        Hide_Account_Details()
 
         If button.Name = "btn_educational" Or button.Name = "btn_scholarship" Then
             If button.Name = "btn_educational" Then
@@ -85,6 +87,17 @@
                 End If
             End If
         Else
+            img_loading.Hide()
+            Dashboard.Hide()
+            Scan_QR_Code.Hide()
+
+            With img_loading
+                .Show()
+                .BringToFront()
+            End With
+
+            Timer1.Start()
+
             is_educational_open = False
             is_educational_selected = False
 
@@ -263,8 +276,6 @@
     End Sub
 
     Private Sub Logout()
-        btn_temp.Focus()
-
         Hide_Account_Details()
 
         primary_key = Nothing
@@ -345,7 +356,35 @@
         End With
     End Sub
 
+    Public Sub Get_All_Transactions_Data()
+        Database_Open()
+
+        Dim results = Get_Transactions_Data()
+
+        Dashboard.listview_data.Items.Clear()
+
+        For Each row As DataRow In results.Rows
+            With Dashboard
+                Dim lvi As ListViewItem
+                Dim row_2 = Get_User_Name(row("student_primary_key").ToString())
+
+                lvi = .listview_data.Items.Add(row("primary_key").ToString())
+                lvi.SubItems.Add(row("student_primary_key").ToString())
+                lvi.SubItems.Add(row("date").ToString())
+                lvi.SubItems.Add(row("time").ToString())
+                lvi.SubItems.Add(row_2("name").ToString())
+                lvi.SubItems.Add(row("event").ToString())
+            End With
+        Next
+
+        Database_Close()
+
+        Timer1.Stop()
+    End Sub
+
     Public Sub Hide_Account_Details()
+        btn_temp.Focus()
+
         pnl_account_details_visible = False
         pnl_account_details.Visible = False
     End Sub
@@ -416,7 +455,7 @@
     End Sub
 
     Private Sub btn_toggle_sidebar_Click(sender As Object, e As EventArgs) Handles btn_toggle_sidebar.Click
-        btn_temp.Focus()
+        Hide_Account_Details()
 
         If is_sidebar_open Then
             pnl_sidebar.Width = 80
@@ -506,38 +545,26 @@
     End Sub
 
     Private Sub btn_account_Click(sender As Object, e As EventArgs) Handles btn_account.Click
-        pnl_account_details_visible = True
+        If Not pnl_account_details_visible Then
+            btn_temp.Focus()
 
-        With pnl_account_details
-            .Visible = True
-            .Location = New Point(pnl_body.Width - pnl_account_details.Width - 5, btn_account.Location.Y + 6)
-            .BringToFront()
-        End With
+            pnl_account_details_visible = True
 
-        btn_temp_account.Focus()
+            With pnl_account_details
+                .Visible = True
+                .Location = New Point(pnl_body.Width - pnl_account_details.Width - 5, btn_account.Location.Y + 6)
+                .BringToFront()
+            End With
+        Else
+            Hide_Account_Details()
+        End If
     End Sub
 
     Private Sub btn_logout_2_Click(sender As Object, e As EventArgs) Handles btn_logout_2.Click
         Logout()
     End Sub
 
-    Private Sub btn_temp_account_LostFocus(sender As Object, e As EventArgs) Handles btn_temp_account.LostFocus
-        If Not is_account_buttons_clicked Then
-            Hide_Account_Details()
-        End If
-    End Sub
-
-    Private Sub btn_account_settings_MouseEnter(sender As Object, e As EventArgs) Handles btn_developers.MouseEnter, btn_account_settings.MouseEnter, btn_developers.Enter, btn_account_settings.Enter, btn_logout_2.MouseEnter, btn_logout_2.Enter
-        is_account_buttons_clicked = True
-    End Sub
-
-    Private Sub btn_account_settings_MouseLeave(sender As Object, e As EventArgs) Handles btn_developers.MouseLeave, btn_account_settings.MouseLeave, btn_developers.Leave, btn_account_settings.Leave, btn_logout_2.MouseLeave, btn_logout_2.Leave
-        is_account_buttons_clicked = False
-    End Sub
-
     Private Sub btn_account_settings_Click(sender As Object, e As EventArgs) Handles btn_account_settings.Click
-        btn_temp.Focus()
-
         Hide_Account_Details()
 
         Dim result = Get_User_Data(primary_key)
@@ -556,10 +583,83 @@
     End Sub
 
     Private Sub btn_developers_Click(sender As Object, e As EventArgs) Handles btn_developers.Click
-        btn_temp.Focus()
-
         Hide_Account_Details()
 
         Developers.ShowDialog()
+    End Sub
+
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        Select Case button_name
+            Case "btn_dashboard"
+                Get_All_Transactions_Data()
+
+                With Dashboard
+                    .Show()
+                    .BringToFront()
+                End With
+            Case "btn_scan_qr_code"
+                With Scan_QR_Code
+                    .Show()
+                    .BringToFront()
+                End With
+
+                Timer1.Stop()
+            Case "btn_educational_pending"
+                With Pending
+                    .Show()
+                    .BringToFront()
+                End With
+
+                Timer1.Stop()
+            Case "btn_educational_approved"
+                With Approved
+                    .Show()
+                    .BringToFront()
+                End With
+
+                Timer1.Stop()
+            Case "btn_educational_rejected"
+                With Rejected
+                    .Show()
+                    .BringToFront()
+                End With
+
+                Timer1.Stop()
+            Case "btn_scholarship_pending"
+                With Pending
+                    .Show()
+                    .BringToFront()
+                End With
+
+                Timer1.Stop()
+            Case "btn_scholarship_approved"
+                With Approved
+                    .Show()
+                    .BringToFront()
+                End With
+
+                Timer1.Stop()
+            Case "btn_scholarship_rejected"
+                With Rejected
+                    .Show()
+                    .BringToFront()
+                End With
+
+                Timer1.Stop()
+            Case Else
+                'Do Nothing
+        End Select
+    End Sub
+
+    Private Sub pnl_spacer_Click(sender As Object, e As EventArgs) Handles pnl_spacer.Click, pnl_logo.Click, pnl_header.Click, pnl_footer.Click, Label5.Click, Label4.Click, Label3.Click, Label2.Click, Label1.Click, pnl_sidebar.Click
+        Hide_Account_Details()
+    End Sub
+
+    Private Sub Panel1_Click(sender As Object, e As EventArgs) Handles Panel1.Click
+        btn_account.PerformClick()
+    End Sub
+
+    Private Sub pnl_body_SizeChanged(sender As Object, e As EventArgs) Handles pnl_body.SizeChanged
+        pnl_account_details.Location = New Point(pnl_body.Width - pnl_account_details.Width - 5, btn_account.Location.Y + 6)
     End Sub
 End Class
