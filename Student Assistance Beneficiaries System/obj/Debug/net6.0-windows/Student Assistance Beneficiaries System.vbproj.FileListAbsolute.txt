@@ -142,3 +142,5 @@ E:\Documents\Visual Studio 2022\Projects\Student Assistance Beneficiaries System
 E:\Documents\Visual Studio 2022\Projects\Student Assistance Beneficiaries System\Student Assistance Beneficiaries System\obj\Debug\net6.0-windows\Student_Assistance_Beneficiaries_System.Approved.resources
 E:\Documents\Visual Studio 2022\Projects\Student Assistance Beneficiaries System\Student Assistance Beneficiaries System\obj\Debug\net6.0-windows\Student_Assistance_Beneficiaries_System.Pending.resources
 E:\Documents\Visual Studio 2022\Projects\Student Assistance Beneficiaries System\Student Assistance Beneficiaries System\obj\Debug\net6.0-windows\Student_Assistance_Beneficiaries_System.Rejected.resources
+E:\Documents\Visual Studio 2022\Projects\Student Assistance Beneficiaries System\Student Assistance Beneficiaries System\obj\Debug\net6.0-windows\Student_Assistance_Beneficiaries_System.Application_Details.resources
+E:\Documents\Visual Studio 2022\Projects\Student Assistance Beneficiaries System\Student Assistance Beneficiaries System\obj\Debug\net6.0-windows\Student_Assistance_Beneficiaries_System.Set_Status.resources

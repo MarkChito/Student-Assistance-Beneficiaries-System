@@ -382,6 +382,97 @@
         Timer1.Stop()
     End Sub
 
+    Public Sub Get_Pending_Applications_Data(category As String)
+        Database_Open()
+
+        Dim results = Get_Applications_Data(category, "Pending")
+
+        Pending.listview_data.Items.Clear()
+
+        For Each row As DataRow In results.Rows
+            With Pending
+                Dim lvi As ListViewItem
+                Dim row_2 = Get_User_Name(row("student_primary_key").ToString())
+
+                lvi = .listview_data.Items.Add(row("primary_key").ToString())
+                lvi.SubItems.Add(row("admin_primary_key").ToString())
+                lvi.SubItems.Add(row("student_primary_key").ToString())
+                lvi.SubItems.Add(row_2("name").ToString())
+                lvi.SubItems.Add(row("date").ToString())
+                lvi.SubItems.Add(row("time").ToString())
+                lvi.SubItems.Add(row("category").ToString())
+                lvi.SubItems.Add(row("progress").ToString())
+                lvi.SubItems.Add(row("status").ToString())
+            End With
+        Next
+
+        Database_Close()
+
+        Timer1.Stop()
+    End Sub
+
+    Public Sub Get_Approved_Applications_Data(category As String)
+        Database_Open()
+
+        Dim results = Get_Applications_Data(category, "Approved")
+
+        Approved.listview_data.Items.Clear()
+
+        For Each row As DataRow In results.Rows
+            With Approved
+                Dim lvi As ListViewItem
+                Dim row_2 = Get_User_Name(row("student_primary_key").ToString())
+                Dim row_3 = Get_User_Name(row("admin_primary_key").ToString())
+
+                lvi = .listview_data.Items.Add(row("primary_key").ToString())
+                lvi.SubItems.Add(row("admin_primary_key").ToString())
+                lvi.SubItems.Add(row("student_primary_key").ToString())
+                lvi.SubItems.Add(row_2("name").ToString())
+                lvi.SubItems.Add(row("date").ToString())
+                lvi.SubItems.Add(row("time").ToString())
+                lvi.SubItems.Add(row_3("name").ToString())
+                lvi.SubItems.Add(row("category").ToString())
+                lvi.SubItems.Add(row("progress").ToString())
+                lvi.SubItems.Add(row("status").ToString())
+            End With
+        Next
+
+        Database_Close()
+
+        Timer1.Stop()
+    End Sub
+
+    Public Sub Get_Rejected_Applications_Data(category As String)
+        Database_Open()
+
+        Dim results = Get_Applications_Data(category, "Rejected")
+
+        Rejected.listview_data.Items.Clear()
+
+        For Each row As DataRow In results.Rows
+            With Rejected
+                Dim lvi As ListViewItem
+                Dim row_2 = Get_User_Name(row("student_primary_key").ToString())
+                Dim row_3 = Get_User_Name(row("admin_primary_key").ToString())
+
+                lvi = .listview_data.Items.Add(row("primary_key").ToString())
+                lvi.SubItems.Add(row("admin_primary_key").ToString())
+                lvi.SubItems.Add(row("student_primary_key").ToString())
+                lvi.SubItems.Add(row_2("name").ToString())
+                lvi.SubItems.Add(row("date").ToString())
+                lvi.SubItems.Add(row("time").ToString())
+                lvi.SubItems.Add(row_3("name").ToString())
+                lvi.SubItems.Add(row("category").ToString())
+                lvi.SubItems.Add(row("progress").ToString())
+                lvi.SubItems.Add(row("status").ToString())
+            End With
+        Next
+
+        Database_Close()
+
+        Timer1.Stop()
+    End Sub
+
     Public Sub Hide_Account_Details()
         btn_temp.Focus()
 
@@ -605,47 +696,47 @@
 
                 Timer1.Stop()
             Case "btn_educational_pending"
+                Get_Pending_Applications_Data("Educational")
+
                 With Pending
                     .Show()
                     .BringToFront()
                 End With
-
-                Timer1.Stop()
             Case "btn_educational_approved"
+                Get_Approved_Applications_Data("Educational")
+
                 With Approved
                     .Show()
                     .BringToFront()
                 End With
-
-                Timer1.Stop()
             Case "btn_educational_rejected"
+                Get_Rejected_Applications_Data("Educational")
+
                 With Rejected
                     .Show()
                     .BringToFront()
                 End With
-
-                Timer1.Stop()
             Case "btn_scholarship_pending"
+                Get_Pending_Applications_Data("Scholarship")
+
                 With Pending
                     .Show()
                     .BringToFront()
                 End With
-
-                Timer1.Stop()
             Case "btn_scholarship_approved"
+                Get_Approved_Applications_Data("Scholarship")
+
                 With Approved
                     .Show()
                     .BringToFront()
                 End With
-
-                Timer1.Stop()
             Case "btn_scholarship_rejected"
+                Get_Rejected_Applications_Data("Scholarship")
+
                 With Rejected
                     .Show()
                     .BringToFront()
                 End With
-
-                Timer1.Stop()
             Case Else
                 'Do Nothing
         End Select

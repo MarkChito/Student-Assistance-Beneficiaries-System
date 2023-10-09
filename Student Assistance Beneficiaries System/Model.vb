@@ -1,4 +1,7 @@
-﻿Imports BCrypt
+﻿Imports System.DirectoryServices.ActiveDirectory
+Imports System.Windows.Forms.VisualStyles.VisualStyleElement
+Imports System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel
+Imports BCrypt
 Imports MySql.Data.MySqlClient
 
 Module Model
@@ -335,12 +338,225 @@ Module Model
         Return results
     End Function
 
+    Public Function Get_Applications_Data(category As String, status As String)
+        Dim command As New MySqlCommand
+        Dim adapter As New MySqlDataAdapter
+        Dim table As New DataTable
+
+        table.Clear()
+
+        With command
+            .CommandText = "SELECT * FROM `tbl_studentassistance_applications` WHERE `category`='" & category & "' AND `status`='" & status & "'"
+            .Connection = connection
+            .ExecuteNonQuery()
+        End With
+
+        With adapter
+            .SelectCommand = command
+            .Fill(table)
+        End With
+
+        Return table
+    End Function
+
+    Public Function Get_Student_Data(login_primary_key As String)
+        Dim command As New MySqlCommand
+        Dim adapter As New MySqlDataAdapter
+        Dim table As New DataTable
+
+        table.Clear()
+
+        With command
+            .CommandText = "SELECT * FROM `tbl_studentassistance_students` WHERE `login_primary_key`='" & login_primary_key & "'"
+            .Connection = connection
+            .ExecuteNonQuery()
+        End With
+
+        With adapter
+            .SelectCommand = command
+            .Fill(table)
+        End With
+
+        Return table
+    End Function
+
+    Public Function Get_User_RFID_Number(primary_key As String)
+        Dim results As New Dictionary(Of String, String)()
+        Dim command As New MySqlCommand
+        Dim adapter As New MySqlDataAdapter
+        Dim table As New DataTable
+
+        table.Clear()
+
+        With command
+            .CommandText = "SELECT `rfid_number` FROM `tbl_studentassistance_useraccounts` WHERE `primary_key`='" & primary_key & "'"
+            .Connection = connection
+            .ExecuteNonQuery()
+        End With
+
+        With adapter
+            .SelectCommand = command
+            .Fill(table)
+        End With
+
+        For Each row As DataRow In table.Rows
+            results.Add("rfid_number", row("rfid_number").ToString())
+        Next
+
+        Return results
+    End Function
+
+    Public Function Get_Notification_Badge(student_primary_key As String)
+        Dim results As New Dictionary(Of String, String)()
+
+        Dim db_username = ""
+
+        Database_Open()
+
+        table.Clear()
+
+        With command
+            .CommandText = "SELECT * FROM tbl_studentassistance_notificationbadge WHERE `student_primary_key`='" & student_primary_key & "' AND `status` = 'unclicked'"
+            .Connection = connection
+            .ExecuteNonQuery()
+        End With
+
+        With adapter
+            .SelectCommand = command
+            .Fill(table)
+        End With
+
+        Dim rowCount As Integer = CInt(command.ExecuteScalar())
+
+        Database_Close()
+
+        If rowCount > 0 Then
+            Return False
+        Else
+            Return True
+        End If
+    End Function
+
+    Public Function Specific_Slots_Data(category As String)
+        Dim results As New Dictionary(Of String, String)()
+
+        Database_Open()
+
+        table.Clear()
+
+        With command
+            .CommandText = "SELECT * FROM `tbl_studentassistance_slots` WHERE `category`='" & category & "' ORDER BY `primary_key` ASC"
+            .Connection = connection
+            .ExecuteNonQuery()
+        End With
+
+        With adapter
+            .SelectCommand = command
+            .Fill(table)
+        End With
+
+        For Each row As DataRow In table.Rows
+            results.Add("primary_key", row("primary_key").ToString())
+            results.Add("category", row("category").ToString())
+            results.Add("slot", row("slot").ToString())
+        Next
+
+        Database_Close()
+
+        Return results
+    End Function
+
+    '==================== INSERT QUERIES ===================='
+    Public Sub Add_Notification(student_primary_key As String, admin_primary_key As String, date_now As String, time_now As String, message As String, notification_status As String)
+        Database_Open()
+
+        With command
+            .CommandText = "INSERT INTO `tbl_studentassistance_notifications` (`student_primary_key`, `admin_primary_key`, `date`, `time`, `message`, `status`) VALUES ('" & student_primary_key & "','" & admin_primary_key & "','" & date_now & "','" & time_now & "','" & message & "','" & notification_status & "')"
+            .Connection = connection
+            .ExecuteNonQuery()
+        End With
+
+        Database_Close()
+    End Sub
+
+    Public Sub Add_Notification_Badge(status As String, student_primary_key As String)
+        Database_Open()
+
+        With command
+            .CommandText = "INSERT INTO `tbl_studentassistance_notificationbadge` (`status`, `student_primary_key`) VALUES ('" & status & "','" & student_primary_key & "')"
+            .Connection = connection
+            .ExecuteNonQuery()
+        End With
+
+        Database_Close()
+    End Sub
+
+    Public Sub Add_Transaction(student_primary_key As String, date_now As String, time_now As String, transaction_event As String)
+        Database_Open()
+
+        With command
+            .CommandText = "INSERT INTO `tbl_studentassistance_transactions` (`student_primary_key`, `date`, `time`, `event`) VALUES ('" & student_primary_key & "','" & date_now & "','" & time_now & "','" & transaction_event & "')"
+            .Connection = connection
+            .ExecuteNonQuery()
+        End With
+
+        Database_Close()
+    End Sub
+
     '==================== UPDATE QUERIES ===================='
+    Public Sub Update_Notification_Badge(status As String, student_primary_key As String)
+        Database_Open()
+
+        With command
+            .CommandText = "UPDATE `tbl_studentassistance_notificationbadge` SET `status`='" & status & "' WHERE `student_primary_key`='" & student_primary_key & "'"
+            .Connection = connection
+            .ExecuteNonQuery()
+        End With
+
+        Database_Close()
+    End Sub
+
     Public Sub Update_Account(name As String, rfid_number As String, username As String, password As String, primary_key As String)
         Database_Open()
 
         With command
             .CommandText = "UPDATE `tbl_studentassistance_useraccounts` SET `name`='" & name & "', `rfid_number`='" & rfid_number & "', `username`='" & username & "', `password`='" & password & "' WHERE `primary_key`='" & primary_key & "'"
+            .Connection = connection
+            .ExecuteNonQuery()
+        End With
+
+        Database_Close()
+    End Sub
+
+    Public Sub Update_Application_Admin(date_now As String, time_now As String, admin_primary_key As String, progress As String, status As String, student_primary_key As String)
+        Database_Open()
+
+        With command
+            .CommandText = "UPDATE `tbl_studentassistance_applications` SET `date`='" & date_now & "', `time`='" & time_now & "', `admin_primary_key`='" & admin_primary_key & "', `progress`='" & progress & "', `status`='" & status & "' WHERE `student_primary_key`='" & student_primary_key & "'"
+            .Connection = connection
+            .ExecuteNonQuery()
+        End With
+
+        Database_Close()
+    End Sub
+
+    Public Sub Update_Slot_Category(slots As String, category As String)
+        Database_Open()
+
+        With command
+            .CommandText = "UPDATE `tbl_studentassistance_slots` SET `slot`='" & slots & "' WHERE `category`='" & category & "'"
+            .Connection = connection
+            .ExecuteNonQuery()
+        End With
+
+        Database_Close()
+    End Sub
+
+    Public Sub Update_Application(date_now As String, time_now As String, progress As String, status As String, student_primary_key As String)
+        Database_Open()
+
+        With command
+            .CommandText = "UPDATE `tbl_studentassistance_applications` SET `date`='" & date_now & "', `time`='" & time_now & "', `progress`='" & progress & "', `status`='" & status & "' WHERE `student_primary_key`='" & student_primary_key & "'"
             .Connection = connection
             .ExecuteNonQuery()
         End With
