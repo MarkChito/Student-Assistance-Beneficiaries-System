@@ -69,7 +69,7 @@ Partial Class Scan_QR_Code_Modal
         ' 
         ' txt_qr_code_data
         ' 
-        txt_qr_code_data.Location = New Point(19, 10)
+        txt_qr_code_data.Location = New Point(19, 67)
         txt_qr_code_data.Name = "txt_qr_code_data"
         txt_qr_code_data.Size = New Size(255, 21)
         txt_qr_code_data.TabIndex = 0
