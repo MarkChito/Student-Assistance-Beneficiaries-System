@@ -53,21 +53,33 @@
                 Dim student_primary_key = row("student_primary_key")
                 Dim status = row("status")
 
-                MsgBox("OK")
+                If Not status = "Approved" Then
+                    If status = "Received" Then
+                        Error_Message_Display("This Application ID has already received cash")
+                    ElseIf status = "Pending" Or status = "Rejected" Then
+                        Error_Message_Display("This Application ID has not been approved")
+                    End If
+                Else
+
+                End If
             Else
-                With Main.Scan_QR_Code
-                    .Scan_QR_Code_Message.BringToFront()
-
-                    With .lbl_message
-                        .ForeColor = Color.FromArgb(220, 53, 69)
-                        .Text = "This Application ID doesn't exists"
-                    End With
-
-                    .Center_Object(.Scan_QR_Code_Message, .lbl_message)
-                End With
+                Error_Message_Display("This Application ID doesn't exists")
             End If
         Next
 
         Close()
+    End Sub
+
+    Private Sub Error_Message_Display(message As String)
+        With Main.Scan_QR_Code
+            .Scan_QR_Code_Message.BringToFront()
+
+            With .lbl_message
+                .ForeColor = Color.FromArgb(220, 53, 69)
+                .Text = message
+            End With
+
+            .Center_Object(.Scan_QR_Code_Message, .lbl_message)
+        End With
     End Sub
 End Class
