@@ -31,6 +31,12 @@
     <Compile Update="RFID_Login.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Scan QR Code Details.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Scan QR Code Modal.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Scan QR Code.vb">
       <SubType>UserControl</SubType>
     </Compile>

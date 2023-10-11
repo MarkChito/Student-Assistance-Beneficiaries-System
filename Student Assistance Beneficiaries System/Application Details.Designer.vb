@@ -168,7 +168,6 @@ Partial Class Application_Details
         lbl_admin_name.Size = New Size(84, 15)
         lbl_admin_name.TabIndex = 18
         lbl_admin_name.Text = "Do Not Delete"
-        lbl_admin_name.Visible = False
         ' 
         ' lbl_category
         ' 
@@ -178,7 +177,6 @@ Partial Class Application_Details
         lbl_category.Size = New Size(84, 15)
         lbl_category.TabIndex = 17
         lbl_category.Text = "Do Not Delete"
-        lbl_category.Visible = False
         ' 
         ' lbl_admin_primary_key
         ' 
@@ -188,7 +186,6 @@ Partial Class Application_Details
         lbl_admin_primary_key.Size = New Size(84, 15)
         lbl_admin_primary_key.TabIndex = 16
         lbl_admin_primary_key.Text = "Do Not Delete"
-        lbl_admin_primary_key.Visible = False
         ' 
         ' lbl_student_primary_key
         ' 
@@ -198,7 +195,6 @@ Partial Class Application_Details
         lbl_student_primary_key.Size = New Size(84, 15)
         lbl_student_primary_key.TabIndex = 15
         lbl_student_primary_key.Text = "Do Not Delete"
-        lbl_student_primary_key.Visible = False
         ' 
         ' btn_submit
         ' 

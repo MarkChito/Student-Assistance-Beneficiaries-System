@@ -3,6 +3,16 @@
 Public Class Application_Details
     Private status As String = ""
 
+    Private Sub Truncate(obj As Object)
+        Dim str_obj As String = obj.Text
+
+        If str_obj.Length > 40 Then
+            str_obj = str_obj.Substring(0, 40) & "..."
+        End If
+
+        obj.Text = str_obj
+    End Sub
+
     Private Sub Rounded_Button(button_name As Object)
         Dim path As New Drawing2D.GraphicsPath()
         Dim cornerRadius As Integer = &B10100
@@ -216,5 +226,17 @@ Public Class Application_Details
                 MsgBox("Source file does not exist.", MsgBoxStyle.Critical, "Error")
             End If
         End If
+    End Sub
+
+    Private Sub lbl_school_address_TextChanged(sender As Object, e As EventArgs) Handles lbl_school_address.TextChanged
+        Truncate(lbl_school_address)
+    End Sub
+
+    Private Sub lbl_address_TextChanged(sender As Object, e As EventArgs) Handles lbl_address.TextChanged
+        Truncate(lbl_address)
+    End Sub
+
+    Private Sub lbl_school_name_TextChanged(sender As Object, e As EventArgs) Handles lbl_school_name.TextChanged
+        Truncate(lbl_school_name)
     End Sub
 End Class

@@ -48,7 +48,7 @@
                 Dim row_2 = Get_User_RFID_Number(row("login_primary_key").ToString())
 
                 .lbl_student_primary_key.Text = row("login_primary_key").ToString()
-                .lbl_admin_primary_key.Text = listview_data.SelectedItems(0).SubItems(1).Text
+                .lbl_admin_primary_key.Text = primary_key
                 .lbl_category.Text = listview_data.SelectedItems(0).SubItems(6).Text
                 .lbl_admin_name.Text = Main.btn_account.Text
 

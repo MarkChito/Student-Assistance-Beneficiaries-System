@@ -30,9 +30,12 @@ Partial Class Scan_QR_Code
         Panel4 = New Panel()
         Label1 = New Label()
         pnl_body = New Panel()
-        lbl_no_available_data = New Label()
+        Scan_QR_Code_Message = New Panel()
+        lbl_message = New Label()
+        Scan_QR_Code_Details = New Scan_QR_Code_Details()
         Panel1.SuspendLayout()
         pnl_body.SuspendLayout()
+        Scan_QR_Code_Message.SuspendLayout()
         SuspendLayout()
         ' 
         ' Panel3
@@ -101,23 +104,43 @@ Partial Class Scan_QR_Code
         ' 
         ' pnl_body
         ' 
-        pnl_body.Controls.Add(lbl_no_available_data)
+        pnl_body.Controls.Add(Scan_QR_Code_Message)
+        pnl_body.Controls.Add(Scan_QR_Code_Details)
         pnl_body.Dock = DockStyle.Fill
         pnl_body.Location = New Point(15, 75)
         pnl_body.Name = "pnl_body"
         pnl_body.Size = New Size(1024, 586)
         pnl_body.TabIndex = 6
         ' 
-        ' lbl_no_available_data
+        ' Scan_QR_Code_Message
         ' 
-        lbl_no_available_data.AutoSize = True
-        lbl_no_available_data.Font = New Font("Microsoft Sans Serif", 24F, FontStyle.Bold, GraphicsUnit.Point)
-        lbl_no_available_data.ForeColor = Color.FromArgb(CByte(108), CByte(117), CByte(125))
-        lbl_no_available_data.Location = New Point(367, 275)
-        lbl_no_available_data.Name = "lbl_no_available_data"
-        lbl_no_available_data.Size = New Size(291, 37)
-        lbl_no_available_data.TabIndex = 0
-        lbl_no_available_data.Text = "No Available Data"
+        Scan_QR_Code_Message.Controls.Add(lbl_message)
+        Scan_QR_Code_Message.Dock = DockStyle.Fill
+        Scan_QR_Code_Message.Location = New Point(0, 0)
+        Scan_QR_Code_Message.Name = "Scan_QR_Code_Message"
+        Scan_QR_Code_Message.Size = New Size(1024, 586)
+        Scan_QR_Code_Message.TabIndex = 1
+        ' 
+        ' lbl_message
+        ' 
+        lbl_message.AutoSize = True
+        lbl_message.Font = New Font("Microsoft Sans Serif", 24F, FontStyle.Bold, GraphicsUnit.Point)
+        lbl_message.ForeColor = Color.FromArgb(CByte(108), CByte(117), CByte(125))
+        lbl_message.Location = New Point(367, 275)
+        lbl_message.Name = "lbl_message"
+        lbl_message.Size = New Size(291, 37)
+        lbl_message.TabIndex = 0
+        lbl_message.Text = "No Available Data"
+        ' 
+        ' Scan_QR_Code_Details
+        ' 
+        Scan_QR_Code_Details.BackColor = Color.FromArgb(CByte(244), CByte(246), CByte(249))
+        Scan_QR_Code_Details.Dock = DockStyle.Fill
+        Scan_QR_Code_Details.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        Scan_QR_Code_Details.Location = New Point(0, 0)
+        Scan_QR_Code_Details.Name = "Scan_QR_Code_Details"
+        Scan_QR_Code_Details.Size = New Size(1024, 586)
+        Scan_QR_Code_Details.TabIndex = 2
         ' 
         ' Scan_QR_Code
         ' 
@@ -134,7 +157,8 @@ Partial Class Scan_QR_Code
         Panel1.ResumeLayout(False)
         Panel1.PerformLayout()
         pnl_body.ResumeLayout(False)
-        pnl_body.PerformLayout()
+        Scan_QR_Code_Message.ResumeLayout(False)
+        Scan_QR_Code_Message.PerformLayout()
         ResumeLayout(False)
     End Sub
 
@@ -143,7 +167,9 @@ Partial Class Scan_QR_Code
     Friend WithEvents Panel1 As Panel
     Friend WithEvents Label1 As Label
     Friend WithEvents pnl_body As Panel
-    Friend WithEvents lbl_no_available_data As Label
+    Friend WithEvents lbl_message As Label
     Friend WithEvents Panel4 As Panel
     Friend WithEvents btn_scan_qr_code As Button
+    Friend WithEvents Scan_QR_Code_Message As Panel
+    Friend WithEvents Scan_QR_Code_Details As Scan_QR_Code_Details
 End Class

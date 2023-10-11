@@ -1,6 +1,5 @@
-﻿Imports System.DirectoryServices.ActiveDirectory
-Imports System.Windows.Forms.VisualStyles.VisualStyleElement
-Imports System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel
+﻿Imports System.Security.Cryptography
+Imports System.Text
 Imports BCrypt
 Imports MySql.Data.MySqlClient
 
@@ -407,10 +406,6 @@ Module Model
     End Function
 
     Public Function Get_Notification_Badge(student_primary_key As String)
-        Dim results As New Dictionary(Of String, String)()
-
-        Dim db_username = ""
-
         Database_Open()
 
         table.Clear()
@@ -431,9 +426,9 @@ Module Model
         Database_Close()
 
         If rowCount > 0 Then
-            Return False
-        Else
             Return True
+        Else
+            Return False
         End If
     End Function
 
@@ -464,6 +459,27 @@ Module Model
         Database_Close()
 
         Return results
+    End Function
+
+    Public Function Check_Applications()
+        Database_Open()
+
+        table.Clear()
+
+        With command
+            .CommandText = "SELECT * FROM `tbl_studentassistance_applications`"
+            .Connection = connection
+            .ExecuteNonQuery()
+        End With
+
+        With adapter
+            .SelectCommand = command
+            .Fill(table)
+        End With
+
+        Database_Close()
+
+        Return table
     End Function
 
     '==================== INSERT QUERIES ===================='
@@ -576,5 +592,18 @@ Module Model
         Dim hashedPassword As String = Net.BCrypt.HashPassword(password, salt)
 
         Return hashedPassword
+    End Function
+
+    Public Function MD5_Hash(input As String) As String
+        Dim inputBytes As Byte() = Encoding.UTF8.GetBytes(input)
+        Dim md5 As MD5 = MD5.Create()
+        Dim hashBytes As Byte() = md5.ComputeHash(inputBytes)
+        Dim hashStringBuilder As New StringBuilder()
+
+        For Each hashByte As Byte In hashBytes
+            hashStringBuilder.Append(hashByte.ToString("x2"))
+        Next
+
+        Return hashStringBuilder.ToString()
     End Function
 End Module
