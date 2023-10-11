@@ -315,11 +315,12 @@ Partial Class Application_Details
         ' 
         ' lbl_tor
         ' 
-        lbl_tor.AutoSize = True
+        lbl_tor.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
+        lbl_tor.AutoEllipsis = True
         lbl_tor.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point)
         lbl_tor.Location = New Point(224, 103)
         lbl_tor.Name = "lbl_tor"
-        lbl_tor.Size = New Size(151, 20)
+        lbl_tor.Size = New Size(307, 20)
         lbl_tor.TabIndex = 10
         lbl_tor.Text = "No Image Uploaded"
         ' 
@@ -335,12 +336,12 @@ Partial Class Application_Details
         ' 
         ' lbl_valid_id_back
         ' 
-        lbl_valid_id_back.Anchor = AnchorStyles.Bottom
-        lbl_valid_id_back.AutoSize = True
+        lbl_valid_id_back.Anchor = AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
+        lbl_valid_id_back.AutoEllipsis = True
         lbl_valid_id_back.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        lbl_valid_id_back.Location = New Point(225, 143)
+        lbl_valid_id_back.Location = New Point(224, 143)
         lbl_valid_id_back.Name = "lbl_valid_id_back"
-        lbl_valid_id_back.Size = New Size(151, 20)
+        lbl_valid_id_back.Size = New Size(307, 20)
         lbl_valid_id_back.TabIndex = 6
         lbl_valid_id_back.Text = "No Image Uploaded"
         ' 
@@ -349,7 +350,7 @@ Partial Class Application_Details
         Label33.Anchor = AnchorStyles.Bottom
         Label33.AutoSize = True
         Label33.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point)
-        Label33.Location = New Point(15, 143)
+        Label33.Location = New Point(14, 143)
         Label33.Name = "Label33"
         Label33.Size = New Size(130, 20)
         Label33.TabIndex = 5
@@ -357,11 +358,12 @@ Partial Class Application_Details
         ' 
         ' lbl_psa
         ' 
-        lbl_psa.AutoSize = True
+        lbl_psa.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
+        lbl_psa.AutoEllipsis = True
         lbl_psa.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point)
         lbl_psa.Location = New Point(224, 63)
         lbl_psa.Name = "lbl_psa"
-        lbl_psa.Size = New Size(151, 20)
+        lbl_psa.Size = New Size(307, 20)
         lbl_psa.TabIndex = 4
         lbl_psa.Text = "No Image Uploaded"
         ' 
@@ -377,11 +379,12 @@ Partial Class Application_Details
         ' 
         ' lbl_indigency
         ' 
-        lbl_indigency.AutoSize = True
+        lbl_indigency.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
+        lbl_indigency.AutoEllipsis = True
         lbl_indigency.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point)
         lbl_indigency.Location = New Point(224, 23)
         lbl_indigency.Name = "lbl_indigency"
-        lbl_indigency.Size = New Size(151, 20)
+        lbl_indigency.Size = New Size(307, 20)
         lbl_indigency.TabIndex = 2
         lbl_indigency.Text = "No Image Uploaded"
         ' 
@@ -447,11 +450,12 @@ Partial Class Application_Details
         ' 
         ' lbl_report_card
         ' 
-        lbl_report_card.AutoSize = True
+        lbl_report_card.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
+        lbl_report_card.AutoEllipsis = True
         lbl_report_card.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point)
         lbl_report_card.Location = New Point(224, 103)
         lbl_report_card.Name = "lbl_report_card"
-        lbl_report_card.Size = New Size(151, 20)
+        lbl_report_card.Size = New Size(307, 20)
         lbl_report_card.TabIndex = 8
         lbl_report_card.Text = "No Image Uploaded"
         ' 
@@ -477,12 +481,12 @@ Partial Class Application_Details
         ' 
         ' lbl_valid_id_front
         ' 
-        lbl_valid_id_front.Anchor = AnchorStyles.Bottom
-        lbl_valid_id_front.AutoSize = True
+        lbl_valid_id_front.Anchor = AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
+        lbl_valid_id_front.AutoEllipsis = True
         lbl_valid_id_front.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        lbl_valid_id_front.Location = New Point(225, 143)
+        lbl_valid_id_front.Location = New Point(224, 143)
         lbl_valid_id_front.Name = "lbl_valid_id_front"
-        lbl_valid_id_front.Size = New Size(151, 20)
+        lbl_valid_id_front.Size = New Size(307, 20)
         lbl_valid_id_front.TabIndex = 6
         lbl_valid_id_front.Text = "No Image Uploaded"
         ' 
@@ -491,7 +495,7 @@ Partial Class Application_Details
         Label39.Anchor = AnchorStyles.Bottom
         Label39.AutoSize = True
         Label39.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point)
-        Label39.Location = New Point(15, 143)
+        Label39.Location = New Point(14, 143)
         Label39.Name = "Label39"
         Label39.Size = New Size(133, 20)
         Label39.TabIndex = 5
@@ -499,11 +503,12 @@ Partial Class Application_Details
         ' 
         ' lbl_coe
         ' 
-        lbl_coe.AutoSize = True
+        lbl_coe.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
+        lbl_coe.AutoEllipsis = True
         lbl_coe.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point)
         lbl_coe.Location = New Point(224, 63)
         lbl_coe.Name = "lbl_coe"
-        lbl_coe.Size = New Size(151, 20)
+        lbl_coe.Size = New Size(307, 20)
         lbl_coe.TabIndex = 4
         lbl_coe.Text = "No Image Uploaded"
         ' 
@@ -519,11 +524,12 @@ Partial Class Application_Details
         ' 
         ' lbl_user_image
         ' 
-        lbl_user_image.AutoSize = True
+        lbl_user_image.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
+        lbl_user_image.AutoEllipsis = True
         lbl_user_image.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point)
         lbl_user_image.Location = New Point(224, 23)
         lbl_user_image.Name = "lbl_user_image"
-        lbl_user_image.Size = New Size(151, 20)
+        lbl_user_image.Size = New Size(307, 20)
         lbl_user_image.TabIndex = 2
         lbl_user_image.Text = "No Image Uploaded"
         ' 
@@ -599,11 +605,12 @@ Partial Class Application_Details
         ' 
         ' lbl_mother_occupation
         ' 
-        lbl_mother_occupation.AutoSize = True
+        lbl_mother_occupation.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
+        lbl_mother_occupation.AutoEllipsis = True
         lbl_mother_occupation.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point)
         lbl_mother_occupation.Location = New Point(224, 143)
         lbl_mother_occupation.Name = "lbl_mother_occupation"
-        lbl_mother_occupation.Size = New Size(92, 20)
+        lbl_mother_occupation.Size = New Size(307, 20)
         lbl_mother_occupation.TabIndex = 8
         lbl_mother_occupation.Text = "House Wife"
         ' 
@@ -619,11 +626,12 @@ Partial Class Application_Details
         ' 
         ' lbl_mother_name
         ' 
-        lbl_mother_name.AutoSize = True
+        lbl_mother_name.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
+        lbl_mother_name.AutoEllipsis = True
         lbl_mother_name.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point)
         lbl_mother_name.Location = New Point(224, 103)
         lbl_mother_name.Name = "lbl_mother_name"
-        lbl_mother_name.Size = New Size(122, 20)
+        lbl_mother_name.Size = New Size(307, 20)
         lbl_mother_name.TabIndex = 6
         lbl_mother_name.Text = "Maria Dela Cruz"
         ' 
@@ -639,11 +647,12 @@ Partial Class Application_Details
         ' 
         ' lbl_school_address
         ' 
-        lbl_school_address.AutoSize = True
+        lbl_school_address.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
+        lbl_school_address.AutoEllipsis = True
         lbl_school_address.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point)
         lbl_school_address.Location = New Point(224, 63)
         lbl_school_address.Name = "lbl_school_address"
-        lbl_school_address.Size = New Size(138, 20)
+        lbl_school_address.Size = New Size(307, 20)
         lbl_school_address.TabIndex = 4
         lbl_school_address.Text = "Manila, Philippines"
         ' 
@@ -659,11 +668,12 @@ Partial Class Application_Details
         ' 
         ' lbl_address
         ' 
-        lbl_address.AutoSize = True
+        lbl_address.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
+        lbl_address.AutoEllipsis = True
         lbl_address.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point)
         lbl_address.Location = New Point(224, 23)
         lbl_address.Name = "lbl_address"
-        lbl_address.Size = New Size(127, 20)
+        lbl_address.Size = New Size(307, 20)
         lbl_address.TabIndex = 2
         lbl_address.Text = "Montalban, Rizal"
         ' 
@@ -695,11 +705,12 @@ Partial Class Application_Details
         ' 
         ' lbl_school_name
         ' 
-        lbl_school_name.AutoSize = True
+        lbl_school_name.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
+        lbl_school_name.AutoEllipsis = True
         lbl_school_name.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point)
         lbl_school_name.Location = New Point(224, 63)
         lbl_school_name.Name = "lbl_school_name"
-        lbl_school_name.Size = New Size(201, 20)
+        lbl_school_name.Size = New Size(307, 20)
         lbl_school_name.TabIndex = 8
         lbl_school_name.Text = "University of the Philippines"
         ' 
@@ -715,11 +726,12 @@ Partial Class Application_Details
         ' 
         ' lbl_father_occupation
         ' 
-        lbl_father_occupation.AutoSize = True
+        lbl_father_occupation.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
+        lbl_father_occupation.AutoEllipsis = True
         lbl_father_occupation.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point)
         lbl_father_occupation.Location = New Point(224, 143)
         lbl_father_occupation.Name = "lbl_father_occupation"
-        lbl_father_occupation.Size = New Size(154, 20)
+        lbl_father_occupation.Size = New Size(307, 20)
         lbl_father_occupation.TabIndex = 6
         lbl_father_occupation.Text = "Construction Worker"
         ' 
@@ -735,11 +747,12 @@ Partial Class Application_Details
         ' 
         ' lbl_father_name
         ' 
-        lbl_father_name.AutoSize = True
+        lbl_father_name.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
+        lbl_father_name.AutoEllipsis = True
         lbl_father_name.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point)
         lbl_father_name.Location = New Point(224, 103)
         lbl_father_name.Name = "lbl_father_name"
-        lbl_father_name.Size = New Size(125, 20)
+        lbl_father_name.Size = New Size(307, 20)
         lbl_father_name.TabIndex = 4
         lbl_father_name.Text = "Diego Dela Cruz"
         ' 
@@ -755,11 +768,12 @@ Partial Class Application_Details
         ' 
         ' lbl_mobile_number
         ' 
-        lbl_mobile_number.AutoSize = True
+        lbl_mobile_number.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
+        lbl_mobile_number.AutoEllipsis = True
         lbl_mobile_number.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point)
         lbl_mobile_number.Location = New Point(224, 23)
         lbl_mobile_number.Name = "lbl_mobile_number"
-        lbl_mobile_number.Size = New Size(108, 20)
+        lbl_mobile_number.Size = New Size(307, 20)
         lbl_mobile_number.TabIndex = 2
         lbl_mobile_number.Text = "09123456789"
         ' 
@@ -833,11 +847,12 @@ Partial Class Application_Details
         ' 
         ' lbl_sex
         ' 
-        lbl_sex.AutoSize = True
+        lbl_sex.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
+        lbl_sex.AutoEllipsis = True
         lbl_sex.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point)
         lbl_sex.Location = New Point(224, 103)
         lbl_sex.Name = "lbl_sex"
-        lbl_sex.Size = New Size(43, 20)
+        lbl_sex.Size = New Size(307, 20)
         lbl_sex.TabIndex = 6
         lbl_sex.Text = "Male"
         ' 
@@ -853,11 +868,12 @@ Partial Class Application_Details
         ' 
         ' lbl_rfid_number
         ' 
-        lbl_rfid_number.AutoSize = True
+        lbl_rfid_number.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
+        lbl_rfid_number.AutoEllipsis = True
         lbl_rfid_number.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point)
         lbl_rfid_number.Location = New Point(224, 63)
         lbl_rfid_number.Name = "lbl_rfid_number"
-        lbl_rfid_number.Size = New Size(99, 20)
+        lbl_rfid_number.Size = New Size(307, 20)
         lbl_rfid_number.TabIndex = 4
         lbl_rfid_number.Text = "0123456789"
         ' 
@@ -873,11 +889,12 @@ Partial Class Application_Details
         ' 
         ' lbl_student_number
         ' 
-        lbl_student_number.AutoSize = True
+        lbl_student_number.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
+        lbl_student_number.AutoEllipsis = True
         lbl_student_number.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point)
         lbl_student_number.Location = New Point(224, 23)
         lbl_student_number.Name = "lbl_student_number"
-        lbl_student_number.Size = New Size(77, 20)
+        lbl_student_number.Size = New Size(307, 20)
         lbl_student_number.TabIndex = 2
         lbl_student_number.Text = "17-00136"
         ' 
@@ -907,11 +924,12 @@ Partial Class Application_Details
         ' 
         ' lbl_last_name
         ' 
-        lbl_last_name.AutoSize = True
+        lbl_last_name.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
+        lbl_last_name.AutoEllipsis = True
         lbl_last_name.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point)
         lbl_last_name.Location = New Point(224, 103)
         lbl_last_name.Name = "lbl_last_name"
-        lbl_last_name.Size = New Size(79, 20)
+        lbl_last_name.Size = New Size(307, 20)
         lbl_last_name.TabIndex = 6
         lbl_last_name.Text = "Dela Cruz"
         ' 
@@ -927,11 +945,12 @@ Partial Class Application_Details
         ' 
         ' lbl_middle_name
         ' 
-        lbl_middle_name.AutoSize = True
+        lbl_middle_name.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
+        lbl_middle_name.AutoEllipsis = True
         lbl_middle_name.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point)
         lbl_middle_name.Location = New Point(224, 63)
         lbl_middle_name.Name = "lbl_middle_name"
-        lbl_middle_name.Size = New Size(71, 20)
+        lbl_middle_name.Size = New Size(307, 20)
         lbl_middle_name.TabIndex = 4
         lbl_middle_name.Text = "Marquez"
         ' 
@@ -947,11 +966,12 @@ Partial Class Application_Details
         ' 
         ' lbl_first_name
         ' 
-        lbl_first_name.AutoSize = True
+        lbl_first_name.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
+        lbl_first_name.AutoEllipsis = True
         lbl_first_name.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point)
         lbl_first_name.Location = New Point(224, 23)
         lbl_first_name.Name = "lbl_first_name"
-        lbl_first_name.Size = New Size(44, 20)
+        lbl_first_name.Size = New Size(307, 20)
         lbl_first_name.TabIndex = 2
         lbl_first_name.Text = "Juan"
         ' 

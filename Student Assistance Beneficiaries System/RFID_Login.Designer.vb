@@ -113,6 +113,8 @@ Partial Class RFID_Login
         Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point)
         FormBorderStyle = FormBorderStyle.None
         Name = "RFID_Login"
+        ShowIcon = False
+        ShowInTaskbar = False
         StartPosition = FormStartPosition.CenterParent
         Panel1.ResumeLayout(False)
         Panel1.PerformLayout()

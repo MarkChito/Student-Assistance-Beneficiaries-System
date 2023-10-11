@@ -690,6 +690,14 @@
                 End With
             Case "btn_scan_qr_code"
                 With Scan_QR_Code
+                    .btn_scan_qr_code.Show()
+                    .Scan_QR_Code_Details.Hide()
+
+                    With .Scan_QR_Code_Message
+                        .Show()
+                        .BringToFront()
+                    End With
+
                     With .lbl_message
                         .ForeColor = Color.FromArgb(108, 117, 125)
                         .Text = "No Available Data"

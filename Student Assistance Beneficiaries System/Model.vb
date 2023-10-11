@@ -51,7 +51,9 @@ Module Model
             "connect timeout=" & connection_timeout & ";" &
             "old guids=" & old_guids & ";"
         Try
-            connection.Open()
+            If connection.State = ConnectionState.Closed Then
+                connection.Open()
+            End If
         Catch ex As Exception
             If connection_type = online_connection Then
                 MsgBox("Check your internet connection and try again!", MsgBoxStyle.Critical, "Connection Failed")
@@ -66,7 +68,9 @@ Module Model
     End Sub
 
     Public Sub Database_Close()
-        connection.Close()
+        If connection.State = ConnectionState.Open Then
+            connection.Close()
+        End If
     End Sub
 
     '==================== SELECT QUERIES ===================='
@@ -573,6 +577,18 @@ Module Model
 
         With command
             .CommandText = "UPDATE `tbl_studentassistance_applications` SET `date`='" & date_now & "', `time`='" & time_now & "', `progress`='" & progress & "', `status`='" & status & "' WHERE `student_primary_key`='" & student_primary_key & "'"
+            .Connection = connection
+            .ExecuteNonQuery()
+        End With
+
+        Database_Close()
+    End Sub
+
+    Public Sub Update_Application_Status(primary_key As String)
+        Database_Open()
+
+        With command
+            .CommandText = "UPDATE `tbl_studentassistance_applications` SET `status`='Received' WHERE `primary_key`='" & primary_key & "'"
             .Connection = connection
             .ExecuteNonQuery()
         End With

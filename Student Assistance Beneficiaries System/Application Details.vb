@@ -3,16 +3,6 @@
 Public Class Application_Details
     Private status As String = ""
 
-    Private Sub Truncate(obj As Object)
-        Dim str_obj As String = obj.Text
-
-        If str_obj.Length > 40 Then
-            str_obj = str_obj.Substring(0, 40) & "..."
-        End If
-
-        obj.Text = str_obj
-    End Sub
-
     Private Sub Rounded_Button(button_name As Object)
         Dim path As New Drawing2D.GraphicsPath()
         Dim cornerRadius As Integer = &B10100
@@ -24,6 +14,29 @@ Public Class Application_Details
         path.CloseFigure()
 
         button_name.Region = New Region(path)
+    End Sub
+
+    Private Sub Download_Image(lbl_image As Label, lbl_var_image As Label)
+        If Not lbl_image.Text = "No Image Uploaded" Then
+            Dim sourceFolderPath As String = "dist/img/user_upload"
+            Dim sourceFileName As String = lbl_var_image.Text
+            Dim downloadsFolderPath As String = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads")
+            Dim sourceFilePath As String = Path.Combine(sourceFolderPath, sourceFileName)
+
+            If File.Exists(sourceFilePath) Then
+                Dim destinationFilePath As String = Path.Combine(downloadsFolderPath, sourceFileName)
+
+                Try
+                    File.Copy(sourceFilePath, destinationFilePath, True)
+
+                    MsgBox("Image is downloaded to 'Downloads' Folder.", MsgBoxStyle.Information, "Success")
+                Catch ex As Exception
+                    MsgBox("Error copying image: " & ex.Message, MsgBoxStyle.Critical, "Error")
+                End Try
+            Else
+                MsgBox("Source file does not exist.", MsgBoxStyle.Critical, "Error")
+            End If
+        End If
     End Sub
 
     Private Sub btn_close_Click(sender As Object, e As EventArgs) Handles btn_close.Click
@@ -45,198 +58,34 @@ Public Class Application_Details
     End Sub
 
     Private Sub lbl_user_image_Click(sender As Object, e As EventArgs) Handles lbl_user_image.Click
-        If Not lbl_user_image.Text = "No Image Uploaded" Then
-            Dim sourceFolderPath As String = "dist/img/user_upload"
-            Dim sourceFileName As String = lbl_var_user_image.Text
-            Dim downloadsFolderPath As String = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads")
-            Dim sourceFilePath As String = Path.Combine(sourceFolderPath, sourceFileName)
-
-            If File.Exists(sourceFilePath) Then
-                Dim destinationFilePath As String = Path.Combine(downloadsFolderPath, sourceFileName)
-
-                Try
-                    File.Copy(sourceFilePath, destinationFilePath, True)
-
-                    MsgBox("Image is downloaded to 'Downloads' Folder.", MsgBoxStyle.Information, "Success")
-                Catch ex As Exception
-                    MsgBox("Error copying image: " & ex.Message, MsgBoxStyle.Critical, "Error")
-                End Try
-            Else
-                MsgBox("Source file does not exist.", MsgBoxStyle.Critical, "Error")
-            End If
-        End If
+        Download_Image(lbl_user_image, lbl_var_user_image)
     End Sub
 
     Private Sub lbl_coe_Click(sender As Object, e As EventArgs) Handles lbl_coe.Click
-        If Not lbl_coe.Text = "No Image Uploaded" Then
-            Dim sourceFolderPath As String = "dist/img/user_upload"
-            Dim sourceFileName As String = lbl_var_coe_image.Text
-            Dim downloadsFolderPath As String = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads")
-            Dim sourceFilePath As String = Path.Combine(sourceFolderPath, sourceFileName)
-
-            If File.Exists(sourceFilePath) Then
-                Dim destinationFilePath As String = Path.Combine(downloadsFolderPath, sourceFileName)
-
-                Try
-                    File.Copy(sourceFilePath, destinationFilePath, True)
-
-                    MsgBox("Image is downloaded to 'Downloads' Folder.", MsgBoxStyle.Information, "Success")
-                Catch ex As Exception
-                    MsgBox("Error copying image: " & ex.Message, MsgBoxStyle.Critical, "Error")
-                End Try
-            Else
-                MsgBox("Source file does not exist.", MsgBoxStyle.Critical, "Error")
-            End If
-        End If
+        Download_Image(lbl_coe, lbl_var_coe_image)
     End Sub
 
     Private Sub lbl_report_card_Click(sender As Object, e As EventArgs) Handles lbl_report_card.Click
-        If Not lbl_report_card.Text = "No Image Uploaded" Then
-            Dim sourceFolderPath As String = "dist/img/user_upload"
-            Dim sourceFileName As String = lbl_var_report_card_image.Text
-            Dim downloadsFolderPath As String = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads")
-            Dim sourceFilePath As String = Path.Combine(sourceFolderPath, sourceFileName)
-
-            If File.Exists(sourceFilePath) Then
-                Dim destinationFilePath As String = Path.Combine(downloadsFolderPath, sourceFileName)
-
-                Try
-                    File.Copy(sourceFilePath, destinationFilePath, True)
-
-                    MsgBox("Image is downloaded to 'Downloads' Folder.", MsgBoxStyle.Information, "Success")
-                Catch ex As Exception
-                    MsgBox("Error copying image: " & ex.Message, MsgBoxStyle.Critical, "Error")
-                End Try
-            Else
-                MsgBox("Source file does not exist.", MsgBoxStyle.Critical, "Error")
-            End If
-        End If
+        Download_Image(lbl_report_card, lbl_var_report_card_image)
     End Sub
 
     Private Sub lbl_valid_id_front_Click(sender As Object, e As EventArgs) Handles lbl_valid_id_front.Click
-        If Not lbl_valid_id_front.Text = "No Image Uploaded" Then
-            Dim sourceFolderPath As String = "dist/img/user_upload"
-            Dim sourceFileName As String = lbl_var_valid_id_image_front.Text
-            Dim downloadsFolderPath As String = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads")
-            Dim sourceFilePath As String = Path.Combine(sourceFolderPath, sourceFileName)
-
-            If File.Exists(sourceFilePath) Then
-                Dim destinationFilePath As String = Path.Combine(downloadsFolderPath, sourceFileName)
-
-                Try
-                    File.Copy(sourceFilePath, destinationFilePath, True)
-
-                    MsgBox("Image is downloaded to 'Downloads' Folder.", MsgBoxStyle.Information, "Success")
-                Catch ex As Exception
-                    MsgBox("Error copying image: " & ex.Message, MsgBoxStyle.Critical, "Error")
-                End Try
-            Else
-                MsgBox("Source file does not exist.", MsgBoxStyle.Critical, "Error")
-            End If
-        End If
+        Download_Image(lbl_valid_id_front, lbl_var_valid_id_image_front)
     End Sub
 
     Private Sub lbl_indigency_Click(sender As Object, e As EventArgs) Handles lbl_indigency.Click
-        If Not lbl_indigency.Text = "No Image Uploaded" Then
-            Dim sourceFolderPath As String = "dist/img/user_upload"
-            Dim sourceFileName As String = lbl_var_indigency_image.Text
-            Dim downloadsFolderPath As String = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads")
-            Dim sourceFilePath As String = Path.Combine(sourceFolderPath, sourceFileName)
-
-            If File.Exists(sourceFilePath) Then
-                Dim destinationFilePath As String = Path.Combine(downloadsFolderPath, sourceFileName)
-
-                Try
-                    File.Copy(sourceFilePath, destinationFilePath, True)
-
-                    MsgBox("Image is downloaded to 'Downloads' Folder.", MsgBoxStyle.Information, "Success")
-                Catch ex As Exception
-                    MsgBox("Error copying image: " & ex.Message, MsgBoxStyle.Critical, "Error")
-                End Try
-            Else
-                MsgBox("Source file does not exist.", MsgBoxStyle.Critical, "Error")
-            End If
-        End If
+        Download_Image(lbl_indigency, lbl_var_indigency_image)
     End Sub
 
     Private Sub lbl_psa_Click(sender As Object, e As EventArgs) Handles lbl_psa.Click
-        If Not lbl_psa.Text = "No Image Uploaded" Then
-            Dim sourceFolderPath As String = "dist/img/user_upload"
-            Dim sourceFileName As String = lbl_var_psa_image.Text
-            Dim downloadsFolderPath As String = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads")
-            Dim sourceFilePath As String = Path.Combine(sourceFolderPath, sourceFileName)
-
-            If File.Exists(sourceFilePath) Then
-                Dim destinationFilePath As String = Path.Combine(downloadsFolderPath, sourceFileName)
-
-                Try
-                    File.Copy(sourceFilePath, destinationFilePath, True)
-
-                    MsgBox("Image is downloaded to 'Downloads' Folder.", MsgBoxStyle.Information, "Success")
-                Catch ex As Exception
-                    MsgBox("Error copying image: " & ex.Message, MsgBoxStyle.Critical, "Error")
-                End Try
-            Else
-                MsgBox("Source file does not exist.", MsgBoxStyle.Critical, "Error")
-            End If
-        End If
+        Download_Image(lbl_psa, lbl_var_psa_image)
     End Sub
 
     Private Sub lbl_tor_Click(sender As Object, e As EventArgs) Handles lbl_tor.Click
-        If Not lbl_tor.Text = "No Image Uploaded" Then
-            Dim sourceFolderPath As String = "dist/img/user_upload"
-            Dim sourceFileName As String = lbl_var_tor_image.Text
-            Dim downloadsFolderPath As String = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads")
-            Dim sourceFilePath As String = Path.Combine(sourceFolderPath, sourceFileName)
-
-            If File.Exists(sourceFilePath) Then
-                Dim destinationFilePath As String = Path.Combine(downloadsFolderPath, sourceFileName)
-
-                Try
-                    File.Copy(sourceFilePath, destinationFilePath, True)
-
-                    MsgBox("Image is downloaded to 'Downloads' Folder.", MsgBoxStyle.Information, "Success")
-                Catch ex As Exception
-                    MsgBox("Error copying image: " & ex.Message, MsgBoxStyle.Critical, "Error")
-                End Try
-            Else
-                MsgBox("Source file does not exist.", MsgBoxStyle.Critical, "Error")
-            End If
-        End If
+        Download_Image(lbl_tor, lbl_var_tor_image)
     End Sub
 
     Private Sub lbl_valid_id_back_Click(sender As Object, e As EventArgs) Handles lbl_valid_id_back.Click
-        If Not lbl_valid_id_back.Text = "No Image Uploaded" Then
-            Dim sourceFolderPath As String = "dist/img/user_upload"
-            Dim sourceFileName As String = lbl_var_valid_id_image_back.Text
-            Dim downloadsFolderPath As String = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads")
-            Dim sourceFilePath As String = Path.Combine(sourceFolderPath, sourceFileName)
-
-            If File.Exists(sourceFilePath) Then
-                Dim destinationFilePath As String = Path.Combine(downloadsFolderPath, sourceFileName)
-
-                Try
-                    File.Copy(sourceFilePath, destinationFilePath, True)
-
-                    MsgBox("Image is downloaded to 'Downloads' Folder.", MsgBoxStyle.Information, "Success")
-                Catch ex As Exception
-                    MsgBox("Error copying image: " & ex.Message, MsgBoxStyle.Critical, "Error")
-                End Try
-            Else
-                MsgBox("Source file does not exist.", MsgBoxStyle.Critical, "Error")
-            End If
-        End If
-    End Sub
-
-    Private Sub lbl_school_address_TextChanged(sender As Object, e As EventArgs) Handles lbl_school_address.TextChanged
-        Truncate(lbl_school_address)
-    End Sub
-
-    Private Sub lbl_address_TextChanged(sender As Object, e As EventArgs) Handles lbl_address.TextChanged
-        Truncate(lbl_address)
-    End Sub
-
-    Private Sub lbl_school_name_TextChanged(sender As Object, e As EventArgs) Handles lbl_school_name.TextChanged
-        Truncate(lbl_school_name)
+        Download_Image(lbl_valid_id_back, lbl_var_valid_id_image_back)
     End Sub
 End Class

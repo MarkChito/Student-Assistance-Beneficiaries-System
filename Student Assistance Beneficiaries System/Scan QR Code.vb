@@ -10,7 +10,7 @@
         Center_Object(Scan_QR_Code_Message, lbl_message)
     End Sub
 
-    Private Sub Panel1_MouseEnter(sender As Object, e As EventArgs) Handles Panel3.MouseEnter, Panel2.MouseEnter, Panel1.MouseEnter, btn_scan_qr_code.MouseEnter, Panel4.MouseEnter, Label1.MouseEnter, pnl_body.MouseEnter, lbl_message.MouseEnter
+    Private Sub Panel1_MouseEnter(sender As Object, e As EventArgs) Handles Panel3.MouseEnter, Panel2.MouseEnter, Panel1.MouseEnter, btn_scan_qr_code.MouseEnter, Panel4.MouseEnter, Label1.MouseEnter, pnl_body.MouseEnter, lbl_message.MouseEnter, Scan_QR_Code_Message.MouseEnter, Scan_QR_Code_Details.MouseEnter
         With Main
             If Not .is_sidebar_open Then
                 .pnl_sidebar.Width = 80
@@ -30,7 +30,7 @@
         End With
     End Sub
 
-    Private Sub Panel3_Click(sender As Object, e As EventArgs) Handles Panel3.Click, Panel2.Click, Panel1.Click, Label1.Click, pnl_body.Click, lbl_message.Click
+    Private Sub Panel3_Click(sender As Object, e As EventArgs) Handles Panel3.Click, Panel2.Click, Panel1.Click, Label1.Click, pnl_body.Click, lbl_message.Click, Scan_QR_Code_Message.Click, Scan_QR_Code_Details.Click
         With Main
             .pnl_account_details_visible = False
             .pnl_account_details.Visible = False
@@ -39,6 +39,8 @@
 
     Private Sub btn_scan_qr_code_Click(sender As Object, e As EventArgs) Handles btn_scan_qr_code.Click
         With Main
+            .btn_temp.Focus()
+
             .pnl_account_details_visible = False
             .pnl_account_details.Visible = False
         End With

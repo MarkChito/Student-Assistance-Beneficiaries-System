@@ -104,6 +104,9 @@ Partial Class Scan_QR_Code
         ' 
         ' pnl_body
         ' 
+        pnl_body.AutoSize = True
+        pnl_body.AutoSizeMode = AutoSizeMode.GrowAndShrink
+        pnl_body.BackColor = Color.FromArgb(CByte(244), CByte(246), CByte(249))
         pnl_body.Controls.Add(Scan_QR_Code_Message)
         pnl_body.Controls.Add(Scan_QR_Code_Details)
         pnl_body.Dock = DockStyle.Fill
@@ -141,6 +144,7 @@ Partial Class Scan_QR_Code
         Scan_QR_Code_Details.Name = "Scan_QR_Code_Details"
         Scan_QR_Code_Details.Size = New Size(1024, 586)
         Scan_QR_Code_Details.TabIndex = 2
+        Scan_QR_Code_Details.Visible = False
         ' 
         ' Scan_QR_Code
         ' 
@@ -160,6 +164,7 @@ Partial Class Scan_QR_Code
         Scan_QR_Code_Message.ResumeLayout(False)
         Scan_QR_Code_Message.PerformLayout()
         ResumeLayout(False)
+        PerformLayout()
     End Sub
 
     Friend WithEvents Panel3 As Panel
