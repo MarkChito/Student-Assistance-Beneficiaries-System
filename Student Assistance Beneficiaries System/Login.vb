@@ -91,74 +91,66 @@ Public Class Login
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
-        If String.IsNullOrWhiteSpace(txt_username.Text) Then
-            btn_sign_in.Text = "Login"
-            remember_me.Enabled = True
+        If Not is_loading Then
+            If String.IsNullOrWhiteSpace(txt_username.Text) Then
+                btn_sign_in.Text = "Login"
+                remember_me.Enabled = True
 
-            Timer1.Stop()
+                Timer1.Stop()
 
-            MessageBox.Show("Please fill in the Username field.", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                MessageBox.Show("Please fill in the Username field.", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Error)
 
-            txt_username.Focus()
-        ElseIf String.IsNullOrWhiteSpace(txt_password.Text) Then
-            btn_sign_in.Text = "Login"
-            remember_me.Enabled = True
+                txt_username.Focus()
+            ElseIf String.IsNullOrWhiteSpace(txt_password.Text) Then
+                btn_sign_in.Text = "Login"
+                remember_me.Enabled = True
 
-            Timer1.Stop()
+                Timer1.Stop()
 
-            MessageBox.Show("Please fill in the Password field.", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                MessageBox.Show("Please fill in the Password field.", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Error)
 
-            txt_password.Focus()
-        Else
-            is_loading = True
+                txt_password.Focus()
+            Else
+                Database_Open()
 
-            Dim results = Authenticate(txt_username.Text, txt_password.Text)
+                is_loading = True
 
-            Dim response_code = results("response_code")
+                Dim results = Authenticate(txt_username.Text, txt_password.Text)
 
-            If response_code = 200 Then
-                primary_key = results("primary_key")
+                Dim response_code = results("response_code")
 
-                Me.Hide()
+                If response_code = 200 Then
+                    primary_key = results("primary_key")
 
-                With Main
-                    .Show()
-                    .btn_account.Text = results("name")
-                    .Mouse_Click(.btn_dashboard)
-                    .WindowState = FormWindowState.Maximized
-                End With
+                    Load_All_Images()
+                Else
+                    pnl_parent.Height = pnl_login_form.Height + 61
 
-                If Not remember_me.Checked Then
+                    With pnl_notification
+                        .Show()
+                        .BackColor = Color.FromArgb(220, 53, 69)
+                        .Location = New Point(0, 0)
+                    End With
+
+                    lbl_notification.Text = "Invalid Username or Password"
+
+                    Center_Object(pnl_notification, lbl_notification)
+
                     txt_username.Clear()
                     txt_password.Clear()
 
-                    remember_me.Checked = False
+                    Center_Object(ClientSize, pnl_parent)
+
+                    remember_me.Enabled = True
+                    btn_sign_in.Text = "Login"
+
+                    is_loading = False
+
+                    Database_Close()
+
+                    Timer1.Stop()
                 End If
-            Else
-                pnl_parent.Height = pnl_login_form.Height + 61
-
-                With pnl_notification
-                    .Show()
-                    .BackColor = Color.FromArgb(220, 53, 69)
-                    .Location = New Point(0, 0)
-                End With
-
-                lbl_notification.Text = "Invalid Username or Password"
-
-                Center_Object(pnl_notification, lbl_notification)
-
-                txt_username.Clear()
-                txt_password.Clear()
-
-                Center_Object(ClientSize, pnl_parent)
             End If
-
-            remember_me.Enabled = True
-            btn_sign_in.Text = "Login"
-
-            is_loading = False
-
-            Timer1.Stop()
         End If
     End Sub
 

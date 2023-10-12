@@ -146,3 +146,16 @@ E:\Documents\Visual Studio 2022\Projects\Student Assistance Beneficiaries System
 E:\Documents\Visual Studio 2022\Projects\Student Assistance Beneficiaries System\Student Assistance Beneficiaries System\obj\Debug\net6.0-windows\Student_Assistance_Beneficiaries_System.Set_Status.resources
 E:\Documents\Visual Studio 2022\Projects\Student Assistance Beneficiaries System\Student Assistance Beneficiaries System\obj\Debug\net6.0-windows\Student_Assistance_Beneficiaries_System.Scan_QR_Code_Details.resources
 E:\Documents\Visual Studio 2022\Projects\Student Assistance Beneficiaries System\Student Assistance Beneficiaries System\obj\Debug\net6.0-windows\Student_Assistance_Beneficiaries_System.Scan_QR_Code_Modal.resources
+E:\Documents\Visual Studio 2022\Projects\Student Assistance Beneficiaries System\Student Assistance Beneficiaries System\bin\Debug\net6.0-windows\AWSSDK.Core.dll
+E:\Documents\Visual Studio 2022\Projects\Student Assistance Beneficiaries System\Student Assistance Beneficiaries System\bin\Debug\net6.0-windows\AWSSDK.SecurityToken.dll
+E:\Documents\Visual Studio 2022\Projects\Student Assistance Beneficiaries System\Student Assistance Beneficiaries System\bin\Debug\net6.0-windows\DnsClient.dll
+E:\Documents\Visual Studio 2022\Projects\Student Assistance Beneficiaries System\Student Assistance Beneficiaries System\bin\Debug\net6.0-windows\Microsoft.Extensions.Logging.Abstractions.dll
+E:\Documents\Visual Studio 2022\Projects\Student Assistance Beneficiaries System\Student Assistance Beneficiaries System\bin\Debug\net6.0-windows\MongoDB.Bson.dll
+E:\Documents\Visual Studio 2022\Projects\Student Assistance Beneficiaries System\Student Assistance Beneficiaries System\bin\Debug\net6.0-windows\MongoDB.Driver.dll
+E:\Documents\Visual Studio 2022\Projects\Student Assistance Beneficiaries System\Student Assistance Beneficiaries System\bin\Debug\net6.0-windows\MongoDB.Driver.Core.dll
+E:\Documents\Visual Studio 2022\Projects\Student Assistance Beneficiaries System\Student Assistance Beneficiaries System\bin\Debug\net6.0-windows\MongoDB.Libmongocrypt.dll
+E:\Documents\Visual Studio 2022\Projects\Student Assistance Beneficiaries System\Student Assistance Beneficiaries System\bin\Debug\net6.0-windows\SharpCompress.dll
+E:\Documents\Visual Studio 2022\Projects\Student Assistance Beneficiaries System\Student Assistance Beneficiaries System\bin\Debug\net6.0-windows\Snappier.dll
+E:\Documents\Visual Studio 2022\Projects\Student Assistance Beneficiaries System\Student Assistance Beneficiaries System\bin\Debug\net6.0-windows\runtimes\linux\native\libmongocrypt.so
+E:\Documents\Visual Studio 2022\Projects\Student Assistance Beneficiaries System\Student Assistance Beneficiaries System\bin\Debug\net6.0-windows\runtimes\osx\native\libmongocrypt.dylib
+E:\Documents\Visual Studio 2022\Projects\Student Assistance Beneficiaries System\Student Assistance Beneficiaries System\bin\Debug\net6.0-windows\runtimes\win\native\mongocrypt.dll

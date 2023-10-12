@@ -28,6 +28,8 @@
     Private Sub txt_rfid_number_KeyDown(sender As Object, e As KeyEventArgs) Handles txt_rfid_number.KeyDown
         If e.KeyCode = Keys.Enter Then
             If Not String.IsNullOrWhiteSpace(txt_rfid_number.Text) Then
+                Database_Open()
+
                 Login.is_loading = True
 
                 Dim results = RFID_Authenticate(txt_rfid_number.Text)
@@ -36,6 +38,7 @@
 
                 If response_code = 200 Then
                     primary_key = results("primary_key")
+                    Main.btn_account.Text = results("name")
 
                     With txt_rfid_number
                         .Clear()
@@ -44,28 +47,7 @@
 
                     Me.Hide()
 
-                    With Main
-                        .Show()
-                        .btn_account.Text = results("name")
-                        .Mouse_Click(.btn_dashboard)
-                        .WindowState = FormWindowState.Maximized
-                    End With
-
-                    With Login
-                        .remember_me.Enabled = True
-                        .btn_sign_in.Text = "Login"
-
-                        .is_loading = False
-
-                        .pnl_notification.Hide()
-
-                        .txt_username.Clear()
-                        .txt_password.Clear()
-
-                        .remember_me.Checked = False
-
-                        .Hide()
-                    End With
+                    Load_All_Images()
 
                     Me.Close()
                 Else
@@ -94,6 +76,8 @@
                         .Focus()
                     End With
 
+                    Database_Close()
+
                     Me.Close()
                 End If
             Else
@@ -101,6 +85,8 @@
                     .Clear()
                     .Focus()
                 End With
+
+                Database_Close()
             End If
         End If
     End Sub

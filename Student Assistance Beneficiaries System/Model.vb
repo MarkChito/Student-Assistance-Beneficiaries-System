@@ -2,6 +2,10 @@
 Imports System.Text
 Imports BCrypt
 Imports MySql.Data.MySqlClient
+Imports MongoDB.Driver
+Imports MongoDB.Bson
+Imports System.Net.Http
+Imports System.IO
 
 Module Model
     Private connection As New MySqlConnection
@@ -12,11 +16,68 @@ Module Model
     Private ReadOnly online_connection = "https://"
     Private ReadOnly localhost_connection = "http://localhost/"
 
-    ' Change this when connecting online
-    Public ReadOnly connection_type = localhost_connection
-
     Public url As String = connection_type & "cdmstudentassistance.ssystem.online/"
     Public primary_key As String = ""
+
+    Private tbl_studentassistance_applications As IMongoCollection(Of BsonDocument) = MongoDB_Table_Name("tbl_studentassistance_applications")
+    Private tbl_studentassistance_notificationbadge As IMongoCollection(Of BsonDocument) = MongoDB_Table_Name("tbl_studentassistance_notificationbadge")
+    Private tbl_studentassistance_notifications As IMongoCollection(Of BsonDocument) = MongoDB_Table_Name("tbl_studentassistance_notifications")
+    Private tbl_studentassistance_procedures As IMongoCollection(Of BsonDocument) = MongoDB_Table_Name("tbl_studentassistance_procedures")
+    Private tbl_studentassistance_requirements As IMongoCollection(Of BsonDocument) = MongoDB_Table_Name("tbl_studentassistance_requirements")
+    Private tbl_studentassistance_slots As IMongoCollection(Of BsonDocument) = MongoDB_Table_Name("tbl_studentassistance_slots")
+    Private tbl_studentassistance_students As IMongoCollection(Of BsonDocument) = MongoDB_Table_Name("tbl_studentassistance_students")
+    Private tbl_studentassistance_transactions As IMongoCollection(Of BsonDocument) = MongoDB_Table_Name("tbl_studentassistance_transactions")
+    Private tbl_studentassistance_useraccounts As IMongoCollection(Of BsonDocument) = MongoDB_Table_Name("tbl_studentassistance_useraccounts")
+
+    ' CHANGE THIS WHEN CONNECTING ONLINE
+    Public ReadOnly connection_type = localhost_connection
+
+    '====================== MongoDB Functions ======================
+    Public Function MongoDB_Database_Name()
+        Dim online_connectionString As String = "mongodb+srv://admin:admin123@cluster0.aw3fjxd.mongodb.net/?retryWrites=true&w=majority"
+        Dim offline_connectionString As String = "mongodb://localhost:27017"
+        Dim connectionString As String
+
+        If connection_type = online_connection Then
+            connectionString = online_connectionString
+        Else
+            connectionString = offline_connectionString
+        End If
+
+        Dim client As New MongoClient(connectionString)
+        Dim database_name As IMongoDatabase = client.GetDatabase("studentassistance")
+
+        Return database_name
+    End Function
+
+    Public Function MongoDB_Table_Name(string_table_name As String)
+        Dim database_name As IMongoDatabase = MongoDB_Database_Name()
+        Dim table_name As IMongoCollection(Of BsonDocument) = database_name.GetCollection(Of BsonDocument)(string_table_name)
+
+        Return table_name
+    End Function
+
+    Public Sub MongoDB_Initialize()
+        Dim filter = Builders(Of BsonDocument).Filter.And(Builders(Of BsonDocument).Filter.Eq(Of String)("primary_key", "1"))
+        Dim existingDocument = tbl_studentassistance_useraccounts.Find(filter).FirstOrDefault()
+
+        If existingDocument Is Nothing Then
+            Dim password = Password_Hash("admin123")
+
+            Dim admin_data As New BsonDocument From {
+                    {"_id", ObjectId.GenerateNewId()},
+                    {"primary_key", "1"},
+                    {"rfid_number", ""},
+                    {"name", "Administrator"},
+                    {"username", "admin"},
+                    {"password", password.ToString},
+                    {"user_type", "super admin"},
+                    {"email", ""}
+                }
+
+            tbl_studentassistance_useraccounts.InsertOne(admin_data)
+        End If
+    End Sub
 
     '==================== MYSQL FUNCTIONS ===================='
     Public Sub Database_Open()
@@ -74,14 +135,100 @@ Module Model
     End Sub
 
     '==================== SELECT QUERIES ===================='
+    Public Async Sub Load_All_Images()
+        Login.Hide()
+
+        Dim result = Await Get_All_Student_Data()
+
+        Dim response_ok As Integer = 0
+
+        If result("response_code") = 200 Then
+            response_ok += 1
+        End If
+
+        If response_ok = 1 Then
+            With Main
+                .Show()
+                .Mouse_Click(.btn_dashboard)
+                .WindowState = FormWindowState.Maximized
+            End With
+
+            With Login
+                If Not .remember_me.Checked Then
+                    .txt_username.Clear()
+                    .txt_password.Clear()
+
+                    .remember_me.Checked = False
+                End If
+
+                .remember_me.Enabled = True
+                .btn_sign_in.Text = "Login"
+
+                .is_loading = False
+
+                Database_Close()
+
+                .Timer1.Stop()
+            End With
+        End If
+    End Sub
+
+    Private Async Function Get_All_Student_Data() As Task(Of Dictionary(Of String, String))
+        Dim results As New Dictionary(Of String, String)()
+        Dim httpClient As New HttpClient()
+
+        table.Clear()
+
+        With command
+            .CommandText = "SELECT * FROM `tbl_studentassistance_students` ORDER BY `primary_key` DESC"
+            .Connection = connection
+            .ExecuteNonQuery()
+        End With
+
+        With adapter
+            .SelectCommand = command
+            .Fill(table)
+        End With
+
+        For Each row As DataRow In table.Rows
+            Dim db_image_names() As String = {row("indigency_image"), row("psa_image"), row("report_card_image"), row("tor_image"), row("user_image"), row("coe_image"), row("valid_id_image_back"), row("valid_id_image_front")}
+
+            For Each image_name As String In db_image_names
+                Dim _image = image_name
+
+                If String.IsNullOrWhiteSpace(image_name) Then
+                    image_name = "default_user_image.png"
+                End If
+
+                Dim imageUrl As String = connection_type & "cdmstudentassistance.ssystem.online/dist/img/user_upload/" & image_name
+                Dim localImagePath As String = "dist/img/user_upload/" & image_name
+
+                If Not File.Exists(localImagePath) Then
+                    Try
+                        Dim imageBytes As Byte() = Await httpClient.GetByteArrayAsync(imageUrl)
+                        File.WriteAllBytes(localImagePath, imageBytes)
+                    Catch ex As Exception
+                        MsgBox("Check your internet connection and try again!", MsgBoxStyle.Critical, "Connection Failed")
+
+                        Login.Close()
+
+                        Application.Exit()
+                    End Try
+                End If
+            Next
+        Next
+
+        results.Add("response_code", 200)
+
+        Return results
+    End Function
+
     Public Function Authenticate(username As String, password As String)
         Dim results As New Dictionary(Of String, String)()
 
         Dim db_username = ""
         Dim db_password = ""
         Dim db_user_type = ""
-
-        Database_Open()
 
         table.Clear()
 
@@ -123,8 +270,6 @@ Module Model
             results.Add("response_code", 404)
         End If
 
-        Database_Close()
-
         Return results
     End Function
 
@@ -133,8 +278,6 @@ Module Model
 
         Dim db_rfid_number = ""
         Dim db_user_type = ""
-
-        Database_Open()
 
         table.Clear()
 
@@ -168,8 +311,6 @@ Module Model
         Else
             results.Add("response_code", 404)
         End If
-
-        Database_Close()
 
         Return results
     End Function
@@ -497,6 +638,17 @@ Module Model
         End With
 
         Database_Close()
+
+        Dim Document As New BsonDocument() From {
+            {"student_primary_key", student_primary_key},
+            {"admin_primary_key", admin_primary_key},
+            {"date", date_now},
+            {"time", time_now},
+            {"message", message},
+            {"status", notification_status}
+        }
+
+        tbl_studentassistance_notifications.InsertOne(Document)
     End Sub
 
     Public Sub Add_Notification_Badge(status As String, student_primary_key As String)
@@ -509,6 +661,13 @@ Module Model
         End With
 
         Database_Close()
+
+        Dim Document As New BsonDocument() From {
+            {"status", status},
+            {"student_primary_key", student_primary_key}
+        }
+
+        tbl_studentassistance_notificationbadge.InsertOne(Document)
     End Sub
 
     Public Sub Add_Transaction(student_primary_key As String, date_now As String, time_now As String, transaction_event As String)
@@ -521,6 +680,15 @@ Module Model
         End With
 
         Database_Close()
+
+        Dim Document As New BsonDocument() From {
+            {"student_primary_key", student_primary_key},
+            {"date", date_now},
+            {"time", time_now},
+            {"event", transaction_event}
+        }
+
+        tbl_studentassistance_transactions.InsertOne(Document)
     End Sub
 
     '==================== UPDATE QUERIES ===================='
@@ -534,6 +702,11 @@ Module Model
         End With
 
         Database_Close()
+
+        Dim filter = Builders(Of BsonDocument).Filter.Eq(Of String)("student_primary_key", student_primary_key)
+        Dim update = Builders(Of BsonDocument).Update.Set(Of String)("status", status)
+
+        tbl_studentassistance_notificationbadge.UpdateOne(filter, update)
     End Sub
 
     Public Sub Update_Account(name As String, rfid_number As String, username As String, password As String, primary_key As String)
@@ -546,6 +719,11 @@ Module Model
         End With
 
         Database_Close()
+
+        Dim filter = Builders(Of BsonDocument).Filter.Eq(Of String)("primary_key", primary_key)
+        Dim update = Builders(Of BsonDocument).Update.Set(Of String)("name", name).Set(Of String)("rfid_number", rfid_number).Set(Of String)("username", username).Set(Of String)("password", password)
+
+        tbl_studentassistance_useraccounts.UpdateOne(filter, update)
     End Sub
 
     Public Sub Update_Application_Admin(date_now As String, time_now As String, admin_primary_key As String, progress As String, status As String, student_primary_key As String)
@@ -558,6 +736,11 @@ Module Model
         End With
 
         Database_Close()
+
+        Dim filter = Builders(Of BsonDocument).Filter.Eq(Of String)("student_primary_key", student_primary_key)
+        Dim update = Builders(Of BsonDocument).Update.Set(Of String)("date", date_now).Set(Of String)("time", time_now).Set(Of String)("admin_primary_key", admin_primary_key).Set(Of String)("progress", progress).Set(Of String)("status", status)
+
+        tbl_studentassistance_applications.UpdateOne(filter, update)
     End Sub
 
     Public Sub Update_Slot_Category(slots As String, category As String)
@@ -570,6 +753,11 @@ Module Model
         End With
 
         Database_Close()
+
+        Dim filter = Builders(Of BsonDocument).Filter.Eq(Of String)("category", category)
+        Dim update = Builders(Of BsonDocument).Update.Set(Of String)("slot", slots)
+
+        tbl_studentassistance_slots.UpdateOne(filter, update)
     End Sub
 
     Public Sub Update_Application(date_now As String, time_now As String, progress As String, status As String, student_primary_key As String)
@@ -582,6 +770,11 @@ Module Model
         End With
 
         Database_Close()
+
+        Dim filter = Builders(Of BsonDocument).Filter.Eq(Of String)("student_primary_key", student_primary_key)
+        Dim update = Builders(Of BsonDocument).Update.Set(Of String)("date", date_now).Set(Of String)("time", time_now).Set(Of String)("progress", progress).Set(Of String)("status", status)
+
+        tbl_studentassistance_applications.UpdateOne(filter, update)
     End Sub
 
     Public Sub Update_Application_Status(primary_key As String)
@@ -594,6 +787,11 @@ Module Model
         End With
 
         Database_Close()
+
+        Dim filter = Builders(Of BsonDocument).Filter.Eq(Of String)("primary_key", primary_key)
+        Dim update = Builders(Of BsonDocument).Update.Set(Of String)("status", "Received")
+
+        tbl_studentassistance_applications.UpdateOne(filter, update)
     End Sub
 
     '==================== PASSWORD FUNCTIONS ===================='
