@@ -83,7 +83,8 @@ Module Model
     Public Sub Database_Open()
         ' Database Configuration
         Dim localhost_server = "localhost"
-        Dim online_server = "184.168.101.160"
+        'Dim online_server = "184.168.101.160"
+        Dim online_server = "localhost"
         Dim server As String
 
         If connection_type = online_connection Then
